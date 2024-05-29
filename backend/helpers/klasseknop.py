@@ -21,3 +21,4 @@ class Button:
     def on_release(self, call_method):
         GPIO.add_event_detect(self.pin, GPIO.RISING,
                               call_method, bouncetime=self.bouncetime)
+
