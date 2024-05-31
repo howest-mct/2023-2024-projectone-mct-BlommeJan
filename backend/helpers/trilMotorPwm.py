@@ -25,14 +25,18 @@ if __name__ == "__main__":
     try:
         motor = DCMotor(12)
         while True:
-            motor.changeSpeed(100)
-            sleep(2)
-            motor.changeSpeed(50)
-            sleep(2)
-            motor.changeSpeed(0)
-            sleep(2)
-            motor.changeSpeed(50)
-            sleep(2)
+            print("Turning on motor")
+            for i in range(0, 101, 5):
+                motor.changeSpeed(i)
+                sleep(0.1)
+            print("Motor at its max speed")
+            sleep(10)
+            print("Turning off motor")
+            for i in range(100, -1, -5):
+                motor.changeSpeed(i)
+                sleep(0.1)
+            print("Motor stopped")
+            sleep(5)
     except KeyboardInterrupt as e:
         motor.cleanup()
         print("\nQuitting...")

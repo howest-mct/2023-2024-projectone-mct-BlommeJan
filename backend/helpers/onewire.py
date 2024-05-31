@@ -1,5 +1,5 @@
 import time
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 
 class OneWire:
@@ -17,7 +17,9 @@ class OneWire:
         with open(self.file_path, "r") as file:
             content = file.readlines()
             for line in content:
-                if "t=" in line:è
+                if "t=" in line:
+                    temp_string = line.split("t=")[-1].strip()
+                    return float(temp_string) / 1000.0
 # Example usage
 if __name__ == "__main__":
     try:
@@ -29,11 +31,11 @@ if __name__ == "__main__":
             print(f"Temperature: {t} °C")
             time.sleep(1)
 
-            plt.plot(temp)
-            plt.title("Temperature")
-            plt.xlabel("Time")
-            plt.ylabel("Temperature (°C)")
-            plt.savefig("temperature.png")
+            # plt.plot(temp)
+            # plt.title("Temperature")
+            # plt.xlabel("Time")
+            # plt.ylabel("Temperature (°C)")
+            # plt.savefig("temperature.png")
 
     except KeyboardInterrupt as e:
         "\nQuitting..."
