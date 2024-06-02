@@ -2,6 +2,7 @@ from RPi import GPIO
 from smbus import SMBus
 import time
 
+
 class Pcf8574:
     """PCF Class
     The PCF8574 component is an I/O expander that can be used to get more pins using the i2c bus.
@@ -35,9 +36,10 @@ class Pcf8574:
         self.i2c = SMBus()
         self.i2c.open(1)
         self.address = address
+        self.current_state = 0x00
 
-    # value = 8 bit binary value: 0b00000000
     def write_byte(self, value):
+        self.current_state = value
         self.i2c.write_byte(self.address, value)
 
     def read_byte(self):
@@ -46,9 +48,22 @@ class Pcf8574:
     def __del__(self):
         self.i2c.close()
 
-def motor_control(pcf, value):
-    """Control motors using a binary value."""
-    pcf.write_byte(value)
+    def motor_on(self, motor_index):
+        """Turn on a specific motor by index (0-3)."""
+        if 0 <= motor_index <= 7:
+            self.current_state |= (1 << motor_index)
+            self.write_byte(self.current_state)
+
+    def motor_off(self, motor_index):
+        """Turn off a specific motor by index (0-3)."""
+        if 0 <= motor_index <= 7:
+            self.current_state &= ~(1 << motor_index)
+            self.write_byte(self.current_state)
+
+    def set_motors(self, binary_value):
+        """Set motors state using a binary value."""
+        self.write_byte(binary_value)
+
 
 if __name__ == "__main__":
     try:
@@ -56,20 +71,24 @@ if __name__ == "__main__":
 
         # Example usage
         while True:
-            # Turn on motor 2 (binary 0010)
-            motor_control(pcf, 0b00000010)
+            # Turn on motor 2
+            pcf.motor_on(1)
             time.sleep(2)
 
-            # Turn on motor 1 and motor 4 (binary 1001)
-            motor_control(pcf, 0b00001001)
+            # Turn on motor 1 and motor 4
+            pcf.set_motors(0b00001001)
             time.sleep(2)
 
-            # Turn off all motors (binary 0000)
-            motor_control(pcf, 0b00000000)
+            # Turn off all motors
+            pcf.set_motors(0b00000000)
             time.sleep(2)
 
-            # Turn on all motors (binary 1111)
-            motor_control(pcf, 0b00001111)
+            # Turn on all motors
+            pcf.set_motors(0b00001111)
+            time.sleep(2)
+
+            # Turn off motor 2
+            pcf.motor_off(1)
             time.sleep(2)
 
     except KeyboardInterrupt as k:
