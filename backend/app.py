@@ -4,8 +4,7 @@ from repositories.DataRepository import DataRepository
 from flask import Flask, jsonify
 from flask_socketio import SocketIO, emit
 from flask_cors import CORS
-
-# TODO: GPIO
+from helpers.onewire import OneWire
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'HELLOTHISISSCERET'
@@ -15,28 +14,25 @@ socketio = SocketIO(app, cors_allowed_origins="*",
                     async_mode='gevent', ping_interval=0.5)
 CORS(app)
 
-
-# START een thread op. Belangrijk!!! Debugging moet UIT staan op start van de server, anders start de thread dubbel op
-# werk enkel met de packages gevent en gevent-websocket.
-def all_out():
-    # wait 10s with sleep sintead of threading.Timer, so we can use daemon
-    time.sleep(10)
+def read_temperature():
+    w1 = OneWire("28-8590fd1d64ff")
+    
     while True:
-        print('*** We zetten alles uit **')
-        DataRepository.update_status_alle_lampen(0)
-        status = DataRepository.read_status_lampen()
-        socketio.emit('B2F_alles_uit', {
-                    'status': "lampen uit"})
-        socketio.emit('B2F_status_lampen', {'lampen': status})
-        # save our last run time
-        last_time_alles_uit = now
-        time.sleep(30)
+        # Reading temperature
+        result = w1.read_temperature()
+
+        # Sending temperature to frontend
+        socketio.emit("BTF_temp", { "temp": result })
+
+        # Inserting temperature in database
+        DataRepository.insert_temperature(result)
+
+        # Delay between reads
+        time.sleep(1)
 
 
 def start_thread():
-    # threading.Timer(10, all_out).start()
-    t = threading.Thread(target=all_out, daemon=True)
-    t.start()
+    threading.Thread(target=read_temperature, daemon=True).start()
     print("thread started")
 
 
@@ -50,12 +46,6 @@ def hallo():
 @socketio.on('connect')
 def initial_connection():
     print('A new client connect')
-    # # Send to the client!
-    # vraag de status op van de lampen uit de DB
-    status = DataRepository.read_status_lampen()
-    # socketio.emit('B2F_status_lampen', {'lampen': status})
-    # Beter is het om enkel naar de client te sturen die de verbinding heeft gemaakt.
-    emit('B2F_status_lampen', {'lampen': status}, broadcast=False)
 
 
 @socketio.on('F2B_switch_light')

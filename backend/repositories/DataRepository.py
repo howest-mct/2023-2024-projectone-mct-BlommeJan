@@ -32,3 +32,9 @@ class DataRepository:
         sql = "UPDATE lampen SET status = %s"
         params = [status]
         return Database.execute_sql(sql, params)
+
+    @staticmethod
+    def insert_temperature(temp):
+        sql = "INSERT INTO logtemp (dateTime, tempInC) VALUES (NOW(), %s)"
+        params = [temp]
+        return Database.execute_sql(sql, params)
