@@ -1,0 +1,105 @@
+@font-face {
+    font-family: 'KyivType Serif';
+    src: url('font/KyivTypeSerif-Medium.woff2') format('woff2'),
+        url('font/KyivTypeSerif-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*---------------------------------------/*
+ # VARIABLES
+/*---------------------------------------*/
+
+$BackgroundColor: #17261B;
+$PrimaryColor: #F2EADA;
+$MetaColor: #BFAD86;
+$BtnText: #59503E;
+
+$PrimaryFontFamily: 'KyivType Serif', serif;
+
+$bannerTextFontSizes: 4rem;
+$titleFontSizes: 3rem;
+$navSelectedAndAddTitleFontSizes: 2.5rem;
+$subtitleFontSizes: 2.25rem;
+$postCardTitleFontSizes: 2rem;
+$navAndPostCardTextFontSizes: 1.5rem;
+$text: 1rem;
+
+/*---------------------------------------/*
+ # SETTINGS
+/*---------------------------------------*/
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+html {
+  background-color: $BackgroundColor;
+  color: $PrimaryColor;
+  font-family: $PrimaryFontFamily;
+
+}
+
+/*---------------------------------------/*
+ # GENERIC
+/*---------------------------------------*/
+
+/*---------------------------------------/*
+ # ELEMENTS
+/*---------------------------------------*/
+
+/*---------------------------------------/*
+ # OBJECTS
+/*---------------------------------------*/
+
+/*---------------------------------------/*
+ # COMPONENTS
+/*---------------------------------------*/
+
+.c-nav__ul {
+
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 24px 160px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: $navAndPostCardTextFontSizes;
+    
+}
+
+.c-hero {
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 160px;
+}
+
+/*---------------------------------------/*
+ # UTILITIES
+/*---------------------------------------*/
+
+.u-noLiStyle {
+  list-style: none;
+}
+
+.u-banner {
+    background-image: url('../pictures/Banner/Banner.png');
+    background-size: cover;
+    background-position: center;
+    height: 95vh;
+}
+
+.u-currentPage {
+    font-size: $navSelectedAndAddTitleFontSizes;
+
+}
+
+/*---------------------------------------/*
+ # MEDIA QUERIES
+/*---------------------------------------*/
