@@ -1,3 +1,7 @@
+/*---------------------------------------/*
+ # FONT FACE
+/*---------------------------------------*/
+
 @font-face {
     font-family: 'KyivType Serif';
     src: url('font/KyivTypeSerif-Medium.woff2') format('woff2'),
@@ -11,7 +15,7 @@
  # VARIABLES
 /*---------------------------------------*/
 
-$BackgroundColor: #17261B;
+// $BackgroundColor: #17261B;
 $PrimaryColor: #F2EADA;
 $MetaColor: #BFAD86;
 $BtnText: #59503E;
@@ -92,7 +96,7 @@ html {
     background-image: url('../pictures/Banner/Banner.png');
     background-size: cover;
     background-position: center;
-    height: 95vh;
+    height: 75vh;
 }
 
 .u-currentPage {
