@@ -127,7 +127,7 @@ button {
 
 .c-cocktails {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 0 40px;
     align-items: center;
     flex-direction: row;
@@ -185,9 +185,8 @@ button {
 
 .c-footer {
     padding: 24px 160px;
-    display: flex;
-    align-items: center;
-    font-size: $navAndPostCardTextFontSizes;
+    text-align: center;
+    font-size: $text;
 }
 
 /*---------------------------------------/*
