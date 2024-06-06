@@ -15,20 +15,20 @@
  # VARIABLES
 /*---------------------------------------*/
 
-// $BackgroundColor: #17261B;
+$BackgroundColor: #17261B;
 $PrimaryColor: #F2EADA;
 $MetaColor: #BFAD86;
 $BtnText: #59503E;
 
 $PrimaryFontFamily: 'KyivType Serif', serif;
 
-$bannerTextFontSizes: 4rem;
-$titleFontSizes: 3rem;
-$navSelectedAndAddTitleFontSizes: 2.5rem;
-$subtitleFontSizes: 2.25rem;
-$postCardTitleFontSizes: 2rem;
-$navAndPostCardTextFontSizes: 1.5rem;
-$text: 1rem;
+$bannerTextFontSizes: 4rem; // 64px
+$titleFontSizes: 3rem; // 48px
+$navSelectedAndAddTitleFontSizes: 2.5rem; // 40px
+$subtitleFontSizes: 2.25rem; // 36px
+$postCardTitleFontSizes: 2rem; // 32px
+$navAndPostCardTextFontSizes: 1.5rem; // 24px
+$text: 1rem; // 16px
 
 /*---------------------------------------/*
  # SETTINGS
@@ -47,6 +47,11 @@ html {
 
 }
 
+button {
+    cursor: pointer;
+    font-family: $PrimaryFontFamily;
+}
+
 /*---------------------------------------/*
  # GENERIC
 /*---------------------------------------*/
@@ -62,26 +67,127 @@ html {
 /*---------------------------------------/*
  # COMPONENTS
 /*---------------------------------------*/
-
-.c-nav__ul {
-
-    display: flex;
+.c-nav {
+    background-image: url('../pictures/banner/Banner.png');
+    background-size:cover;
+    background-position: top;
+    background-repeat: repeat-y;
+    height: 12.5vh;
     width: 100%;
-    justify-content: space-around;
-    padding: 24px 160px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    font-size: $navAndPostCardTextFontSizes;
-    
+
+
+    &__ul {
+
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        padding: 24px 160px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size: $navAndPostCardTextFontSizes;
+    }
 }
 
 .c-hero {
-
+    // position
+    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 160px;
+    flex-direction: column;
+    // text
+    padding: 0 160px;   
+    margin-bottom: 100px;
+    // image
+    background-image: url('../pictures/Banner/Banner.png');
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &__text {
+        color: $PrimaryColor;
+        font-size: $bannerTextFontSizes;
+        font-weight: 400;
+        margin-bottom: 24px;
+    }
+
+    &__button {
+        background-color: $PrimaryColor;
+        color: $BtnText;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 50px;
+        font-size: $navAndPostCardTextFontSizes;
+        font-weight: 400;
+        margin-top: 24px;
+    }
+}
+
+.c-cocktails {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 40px;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+
+
+    &__cocktail {
+        background-color: $PrimaryColor;
+        color: $BtnText;
+        border-radius: 60px;
+        margin-bottom: 64px;
+        
+        &__img {
+            width: 400px;
+            height: 400px;
+            resize: both;
+            object-fit: cover;
+            object-position: top;
+            background-color: #fff;
+            border-radius: 60px 60px 0 0;
+        }
+
+        &__info {
+            height: 200px;
+            padding: 20px;
+            gap: 20px;
+            text-align: center;
+            
+            &__name {
+                font-size: $postCardTitleFontSizes;
+            }
+
+            &__text {
+                display: flex;
+                text-align: center;
+                justify-content: space-around;
+                flex-direction: row;
+                font-size: $text;
+                padding: 20px 0;
+
+                &__categories {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    &__categoryIcon {
+                        margin-top: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.c-footer {
+    padding: 24px 160px;
+    display: flex;
+    align-items: center;
+    font-size: $navAndPostCardTextFontSizes;
 }
 
 /*---------------------------------------/*
@@ -92,18 +198,14 @@ html {
   list-style: none;
 }
 
-.u-banner {
-    background-image: url('../pictures/Banner/Banner.png');
-    background-size: cover;
-    background-position: center;
-    height: 75vh;
-}
-
 .u-currentPage {
     font-size: $navSelectedAndAddTitleFontSizes;
-
 }
 
+.u-bigIcon {
+    height: 40px;
+    width: 40px;
+}
 /*---------------------------------------/*
  # MEDIA QUERIES
 /*---------------------------------------*/
