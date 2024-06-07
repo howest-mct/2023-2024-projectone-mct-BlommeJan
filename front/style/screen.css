@@ -95,18 +95,18 @@ button {
 
 .c-cocktails {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin: 0 40px;
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 40px;
 }
 .c-cocktails__cocktail {
   background-color: #F2EADA;
   color: #59503E;
   border-radius: 60px;
-  margin-bottom: 64px;
+  margin-bottom: 20px;
 }
 .c-cocktails__cocktail__img {
   width: 400px;
@@ -145,6 +145,93 @@ button {
   margin-top: 16px;
 }
 
+.c-session {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 24px 160px;
+  gap: 24px;
+  color: #59503E;
+}
+.c-session__actual {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 24px;
+}
+.c-session__actual__inUse {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  width: 75%;
+  background-color: #F2EADA;
+  padding: 24px;
+  border-radius: 16px;
+}
+.c-session__actual__inUse__text {
+  font-size: 2.25rem;
+}
+.c-session__actual__inUse__name {
+  font-size: 1rem;
+}
+.c-session__actual__temp {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 24px;
+  width: 25%;
+  background-color: #F2EADA;
+  padding: 8px 24px;
+  border-radius: 16px;
+}
+.c-session__actual__temp__text {
+  font-size: 1.5rem;
+}
+.c-session__actual__temp__value {
+  font-size: 2.25rem;
+}
+.c-session__actual__temp__compartement {
+  font-size: 1.5rem;
+}
+.c-session__hist {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 24px;
+}
+.c-session__hist__history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 30%;
+  background-color: #F2EADA;
+  padding: 24px;
+  border-radius: 16px;
+}
+.c-session__hist__stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  width: 30%;
+  background-color: #F2EADA;
+  padding: 24px;
+  border-radius: 16px;
+}
+.c-session__hist__graph {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  width: 30%;
+  background-color: #F2EADA;
+  padding: 24px;
+  border-radius: 16px;
+}
+
 .c-footer {
   padding: 24px 160px;
   text-align: center;
@@ -165,6 +252,15 @@ button {
 .u-bigIcon {
   height: 40px;
   width: 40px;
+}
+
+.u-Icon {
+  height: 24px;
+  width: 24px;
+}
+
+.u-noBanner {
+  background-image: none;
 }
 
 /*---------------------------------------/*

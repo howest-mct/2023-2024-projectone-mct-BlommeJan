@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <nav class="c-nav __nav">
+    <nav class="c-nav u-noBanner">
         <ul class="c-nav__ul u-noLiStyle">
           <li class="c-nav__ul__li u-currentPage">Session</li>
           <li class="c-nav__ul__li">Recipes</li>
@@ -21,6 +21,74 @@
           <li class="c-nav__ul__li">Ingredients</li>
           <li class="c-nav__ul__li">Settings</li>
         </ul>
-      </nav>
+    </nav>
+    <div class="c-session">
+      <div class="c-session__actual">
+        <div class="c-session__actual__inUse">
+          <p class="c-session__actual__inUse__text">Currently in use</p>
+          <p class="c-session__actual__inUse__name">Martini</p>
+        </div>
+        <div class="c-session__actual__temp">
+          <p class="c-session__actual__temp__text">Temperature</p>
+          <p class="c-session__actual__temp__value">-5°C</p>
+          <p class="c-session__actual__temp__compartement">In storage</p>
+        </div>
+      </div>
+      <div class="c-session__hist">
+        <div class="c-session__hist__history c-session__hist__section">
+          <h2 class="c-session__hist__history__title">History</h2>
+          <div class="c-session__hist__history__table">
+            <table class="c-session__hist__history__table__table">
+              <tr class="c-session__hist__history__table__table__head">
+                <th class="c-session__hist__history__table__table__head__header">Cocktail</th>
+                <th class="c-session__hist__history__table__table__head__header">Date</th>
+              </tr>
+              <tr class="c-session__hist__history__table__table__data">
+                <td class="c-session__hist__history__table__table__data__data">Martini</td>
+                <td class="c-session__hist__history__table__table__data__data">2024-05-31 6.02PM</td>
+              </tr>
+              <tr class="c-session__hist__history__table__table__data">
+                <td class="c-session__hist__history__table__table__data__data">Margarita</td>
+                <td class="c-session__hist__history__table__table__data__data">2024-05-31 6.00PM</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="c-session__hist__stat c-session__hist__section">
+          <h2 class="c-session__hist__stats__title">Statistics</h2>
+          <h3 class="c-session__hist__stats__subtitle">General stats</h3>
+          <div class="c-session__hist__stats__Genstat">
+            <p class="c-session__hist__stats__Genstat__text">Total cocktails made</p>
+            <p class="c-session__hist__stats__Genstat__value">2</p>
+            <p class="c-session__hist__stats__Genstat__text">Total time shaken</p>
+            <p class="c-session__hist__stats__Genstat__value">5 minutes</p>
+          </div>
+          <h3 class="c-session__hist__stats__subtitle">3 popular cocktails</h3>
+          <div class="c-session__hist__stats__table">
+            <table class="c-session__hist__stats__table__table">
+              <tr class="c-session__hist__stats__table__table__head">
+                <th class="c-session__hist__stats__table__table__head__header">Cocktail</th>
+                <th class="c-session__hist__stats__table__table__head__header">Amount</th>
+              </tr>
+              <tr class="c-session__hist__stats__table__table__data">
+                <td class="c-session__hist__stats__table__table__data__data">Martini</td>
+                <td class="c-session__hist__stats__table__table__data__data">2</td>
+              </tr>
+              <tr class="c-session__hist__stats__table__table__data">
+                <td class="c-session__hist__stats__table__table__data__data">Margarita</td>
+                <td class="c-session__hist__stats__table__table__data__data">1</td>
+              </tr>
+              <tr class="c-session__hist__stats__table__table__data">
+                <td class="c-session__hist__stats__table__table__data__data">Mojito</td>
+                <td class="c-session__hist__stats__table__table__data__data">1</td>
+            </table>
+          </div>
+        </div>
+        <div class="c-session__hist__graph c-session__hist__section">
+          <h2 class="c-session__hist__graph__title">Average temperatur</h2>
+          <div class="c-session__hist__graph__graph" id="graph">p</div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
