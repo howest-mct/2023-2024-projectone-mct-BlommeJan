@@ -22,6 +22,7 @@ $BtnText: #59503E;
 
 $PrimaryFontFamily: 'KyivType Serif', serif;
 
+$floatingbuttonFontSizes: 6rem; // 96px
 $bannerTextFontSizes: 4rem; // 64px
 $titleFontSizes: 3rem; // 48px
 $navSelectedAndAddTitleFontSizes: 2.5rem; // 40px
@@ -50,6 +51,11 @@ html {
 button {
     cursor: pointer;
     font-family: $PrimaryFontFamily;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 /*---------------------------------------/*
@@ -97,7 +103,7 @@ button {
     text-align: center;
     flex-direction: column;
     // text
-    padding: 0 160px;   
+    padding: 0 240px;   
     margin-bottom: 100px;
     // image
     background-image: url('../pictures/Banner/Banner.png');
@@ -122,6 +128,27 @@ button {
         font-size: $navAndPostCardTextFontSizes;
         font-weight: 400;
         margin-top: 24px;
+    }
+}
+
+.c-floatingBtn {
+    position:fixed;
+	width:100px;
+	height:100px;
+	bottom:40px;
+	right:40px;
+	background-color:$PrimaryColor;
+	color:$BtnText;
+	border-radius:50px;
+    font-size: $floatingbuttonFontSizes;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    &__icon {
+        height: 60%;
+        width: 60%;
+        fill: $BtnText;
     }
 }
 

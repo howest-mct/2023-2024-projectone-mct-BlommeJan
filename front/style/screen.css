@@ -31,6 +31,11 @@ button {
   font-family: "KyivType Serif", serif;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /*---------------------------------------/*
  # GENERIC
 /*---------------------------------------*/
@@ -68,7 +73,7 @@ button {
   align-items: center;
   text-align: center;
   flex-direction: column;
-  padding: 0 160px;
+  padding: 0 240px;
   margin-bottom: 100px;
   background-image: url("../pictures/Banner/Banner.png");
   height: 70vh;
@@ -91,6 +96,26 @@ button {
   font-size: 1.5rem;
   font-weight: 400;
   margin-top: 24px;
+}
+
+.c-floatingBtn {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #F2EADA;
+  color: #59503E;
+  border-radius: 50px;
+  font-size: 6rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.c-floatingBtn__icon {
+  height: 60%;
+  width: 60%;
+  fill: #59503E;
 }
 
 .c-cocktails {
