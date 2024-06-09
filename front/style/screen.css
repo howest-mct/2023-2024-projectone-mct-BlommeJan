@@ -1,5 +1,5 @@
-/*---------------------------------------/*
- # FONT FACE
+/*---------------------------------------*/
+/* FONT FACE */
 /*---------------------------------------*/
 @font-face {
   font-family: "KyivType Serif";
@@ -8,16 +8,20 @@
   font-style: normal;
   font-display: swap;
 }
-/*---------------------------------------/*
- # VARIABLES
 /*---------------------------------------*/
-/*---------------------------------------/*
- # SETTINGS
+/* VARIABLES */
+/*---------------------------------------*/
+/* Colors */
+/* Font Family */
+/* Font Sizes */
+/* Breakpoints */
+/*---------------------------------------*/
+/* SETTINGS */
 /*---------------------------------------*/
 * {
   box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -26,12 +30,9 @@ html {
   font-family: "KyivType Serif", serif;
 }
 
-button {
-  cursor: pointer;
-  font-family: "KyivType Serif", serif;
-}
-
+button,
 input {
+  cursor: pointer;
   font-family: "KyivType Serif", serif;
 }
 
@@ -40,17 +41,8 @@ a {
   color: inherit;
 }
 
-/*---------------------------------------/*
- # GENERIC
 /*---------------------------------------*/
-/*---------------------------------------/*
- # ELEMENTS
-/*---------------------------------------*/
-/*---------------------------------------/*
- # OBJECTS
-/*---------------------------------------*/
-/*---------------------------------------/*
- # COMPONENTS
+/* COMPONENTS */
 /*---------------------------------------*/
 .c-nav {
   background-image: url("../pictures/banner/Banner.png");
@@ -69,7 +61,6 @@ a {
   justify-content: space-around;
   padding: 24px 160px;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
   font-size: 1.5rem;
 }
@@ -115,9 +106,9 @@ a {
   color: #59503E;
   border-radius: 50px;
   font-size: 6rem;
+  display: flex;
   justify-content: center;
   align-items: center;
-  display: flex;
 }
 .c-floatingBtn__icon {
   height: 60%;
@@ -134,7 +125,7 @@ a {
   padding: 24px 160px;
   color: #59503E;
 }
-.c-bar__search {
+.c-bar__search, .c-bar__filter {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,13 +135,13 @@ a {
   padding: 24px;
   border-radius: 16px;
 }
-.c-bar__search__input {
+.c-bar__search__input, .c-bar__filter__input {
   width: 75%;
   padding: 8px;
   border-radius: 16px;
   border: none;
 }
-.c-bar__search__button {
+.c-bar__search__button, .c-bar__filter__button {
   background-color: #59503E;
   color: #F2EADA;
   padding: 8px 16px;
@@ -158,21 +149,7 @@ a {
   border-radius: 16px;
 }
 .c-bar__filter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
   width: 20%;
-  background-color: #F2EADA;
-  padding: 24px;
-  border-radius: 16px;
-}
-.c-bar__filter__button {
-  background-color: #59503E;
-  color: #F2EADA;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 16px;
 }
 
 .c-cocktails {
@@ -242,15 +219,17 @@ a {
   width: 100%;
   gap: 24px;
 }
-.c-session__actual__inUse {
+.c-session__actual__inUse, .c-session__actual__temp {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 24px;
-  width: 75%;
   background-color: #F2EADA;
   padding: 24px;
   border-radius: 16px;
+}
+.c-session__actual__inUse {
+  width: 75%;
 }
 .c-session__actual__inUse__text {
   font-size: 2.25rem;
@@ -259,23 +238,15 @@ a {
   font-size: 1rem;
 }
 .c-session__actual__temp {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  gap: 24px;
   width: 25%;
-  background-color: #F2EADA;
+  text-align: center;
   padding: 8px 24px;
-  border-radius: 16px;
 }
-.c-session__actual__temp__text {
+.c-session__actual__temp__text, .c-session__actual__temp__compartement {
   font-size: 1.5rem;
 }
 .c-session__actual__temp__value {
   font-size: 2.25rem;
-}
-.c-session__actual__temp__compartement {
-  font-size: 1.5rem;
 }
 .c-session__hist {
   display: flex;
@@ -301,9 +272,9 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 40px;
-  margin: 40PX;
+  margin: 40px;
 }
-.c-ingredients__current .c-ingredients__all {
+.c-ingredients__current, .c-ingredients__all {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -312,13 +283,13 @@ a {
   gap: 24px;
   color: #59503E;
 }
-.c-ingredients__current .c-ingredients__all__ingredient {
+.c-ingredients__current__ingredient, .c-ingredients__all__ingredient {
   width: 400px;
   height: 400px;
   background-color: #fff;
   border-radius: 60px;
 }
-.c-ingredients__current .c-ingredients__all__ingredient__img {
+.c-ingredients__current__ingredient__img, .c-ingredients__all__ingredient__img {
   width: 400px;
   height: 400px;
   resize: both;
@@ -331,17 +302,151 @@ a {
   -webkit-mask-image: linear-gradient(202deg, rgb(242, 234, 218) 0%, rgba(255, 255, 255, 0) 100%);
           mask-image: linear-gradient(202deg, rgb(242, 234, 218) 0%, rgba(255, 255, 255, 0) 100%);
 }
-.c-ingredients__current .c-ingredients__all__ingredient__text {
+.c-ingredients__current__ingredient__text, .c-ingredients__all__ingredient__text {
   color: #59503E;
   position: relative;
   bottom: 5.5rem;
   left: 2rem;
 }
-.c-ingredients__current .c-ingredients__all__ingredient__text__name {
+.c-ingredients__current__ingredient__text__name, .c-ingredients__all__ingredient__text__name {
   font-size: 1rem;
 }
-.c-ingredients__current .c-ingredients__all__ingredient__text__category {
+.c-ingredients__current__ingredient__text__category, .c-ingredients__all__ingredient__text__category {
   font-size: 2.5rem;
+}
+
+.c-postcard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 160px;
+  color: #59503E;
+  font-size: 1.5rem;
+}
+.c-postcard__top {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: #F2EADA;
+  width: 100%;
+  gap: 40px;
+}
+.c-postcard__top__back {
+  background-color: #F2EADA;
+  width: 100px;
+  height: 100px;
+  color: #59503E;
+  border-radius: 50px;
+  font-size: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.c-postcard__top__back__icon {
+  fill: #59503E;
+}
+.c-postcard__top__back__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.c-postcard__top__back__title__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.c-postcard__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: auto;
+  padding: 24px 40px;
+  color: #59503E;
+  background-color: #F2EADA;
+  border-radius: 16px;
+}
+.c-postcard__content__text {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding: 24px;
+  width: 70%;
+}
+.c-postcard__content__text__short {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: auto;
+}
+.c-postcard__content__text__short__info {
+  gap: 24px;
+  padding: 24px;
+  width: 50%;
+}
+.c-postcard__content__text__short__info__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+  gap: 24px;
+  padding: 24px;
+}
+.c-postcard__content__text__short__info__text__categories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.c-postcard__content__text__short__info__text__categories__categoryIcon {
+  margin-top: 16px;
+}
+.c-postcard__content__text__short__ingredients {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  width: 50%;
+}
+.c-postcard__content__btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 24px;
+  width: 30%;
+}
+.c-postcard__content__btns__btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+}
+.c-postcard__content__btns__btns__btn {
+  background-color: #F2EADA;
+  color: #59503E;
+  padding: 8px 16px;
+  border-color: #59503E;
+  border-radius: 16px;
+  width: 100%;
+  font-size: 1.5rem;
+}
+.c-postcard__content__btns__btns__start {
+  font-size: 2.5rem;
+  background-color: #59503E;
+  color: #F2EADA;
+}
+.c-postcard__content__btns__img {
+  background-color: #fff;
+  border-radius: 16px;
+  width: 400px;
+  height: 400px;
 }
 
 .c-footer {
@@ -350,8 +455,8 @@ a {
   font-size: 1rem;
 }
 
-/*---------------------------------------/*
- # UTILITIES
+/*---------------------------------------*/
+/* UTILITIES */
 /*---------------------------------------*/
 .u-noLiStyle {
   list-style: none;
@@ -394,6 +499,64 @@ a {
   margin-left: 1rem;
 }
 
-/*---------------------------------------/*
- # MEDIA QUERIES
-/*---------------------------------------*//*# sourceMappingURL=screen.css.map */
+.u-meta {
+  color: #BFAD86;
+}
+
+/*---------------------------------------*/
+/* MEDIA QUERIES */
+/*---------------------------------------*/
+@media (max-width: 1200px) {
+  .c-postcard__content {
+    flex-direction: column;
+  }
+}
+@media (max-width: 992px) {
+  .c-nav {
+    height: auto;
+    background-image: none;
+  }
+  .c-nav__ul {
+    padding: 24px 40px;
+    flex-direction: column;
+  }
+  .c-hero {
+    padding: 0 40px;
+  }
+  .c-session__actual {
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+  .c-session__actual__inUse, .c-session__actual__temp {
+    width: 100%;
+  }
+  .c-session__hist {
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+  .c-session__hist__section {
+    width: 100%;
+  }
+  .c-postcard__content {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .c-postcard__content__text {
+    width: 100%;
+  }
+  .c-postcard__content__text__short {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .c-postcard__content__text__short__info {
+    width: 100%;
+  }
+  .c-postcard__content__text__short__ingredients {
+    width: 100%;
+  }
+  .c-postcard__content__btns {
+    width: 100%;
+  }
+}/*# sourceMappingURL=screen.css.map */
