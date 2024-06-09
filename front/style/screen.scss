@@ -1,256 +1,655 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;900&display=swap');
-
-/*---------------------------------------/*
- # SETTINGS
 /*---------------------------------------*/
-$dark-yellow: #ffdb55;
-$bg-color: #aecad8;
-$btn-color: #38434a;
-$btn-color-hover: #414e56;
-
-@keyframes move-left {
-  0% {
-    transform: none;
-  }
-  65% {
-    transform: translateX(-80px);
-  }
-  100% {
-    transform: translateX(-80px);
-  }
-}
-@keyframes move-right {
-  0% {
-    transform: none;
-  }
-  65% {
-    transform: translateX(80px);
-  }
-  100% {
-    transform: translateX(80px);
-  }
-}
-@keyframes move-up {
-  100% {
-    bottom: 100.75px;
-  }
-}
-@keyframes move-down {
-  100% {
-    top: 100.75px;
-  }
-}
-@keyframes width-to-zero {
-  0% {
-    width: 50px;
-  }
-  100% {
-    width: 11px;
-  }
-}
-
-/*---------------------------------------/*
- # GENERIC
+/* FONT FACE */
 /*---------------------------------------*/
+@font-face {
+    font-family: 'KyivType Serif';
+    src: url('font/KyivTypeSerif-Medium.woff2') format('woff2'),
+        url('font/KyivTypeSerif-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
 
-/*---------------------------------------/*
- # ELEMENTS
 /*---------------------------------------*/
-body,
+/* VARIABLES */
+/*---------------------------------------*/
+/* Colors */
+$BackgroundColor: #17261B;
+$PrimaryColor: #F2EADA;
+$MetaColor: #BFAD86;
+$BtnText: #59503E;
+
+/* Font Family */
+$PrimaryFontFamily: 'KyivType Serif', serif;
+
+/* Font Sizes */
+$floatingbuttonFontSizes: 6rem; // 96px
+$bannerTextFontSizes: 4rem; // 64px
+$titleFontSizes: 3rem; // 48px
+$navSelectedAndAddTitleFontSizes: 2.5rem; // 40px
+$subtitleFontSizes: 2.25rem; // 36px
+$postCardTitleFontSizes: 2rem; // 32px
+$navAndPostCardTextFontSizes: 1.5rem; // 24px
+$text: 1rem; // 16px
+
+/* Breakpoints */
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+/*---------------------------------------*/
+/* SETTINGS */
+/*---------------------------------------*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 html {
-  height: 100%;
-  width: 100%;
+    background-color: $BackgroundColor;
+    color: $PrimaryColor;
+    font-family: $PrimaryFontFamily;
 }
 
-body {
-  background: $bg-color;
-  transition: all 0.14s ease-in;
+button,
+input {
+    cursor: pointer;
+    font-family: $PrimaryFontFamily;
 }
 
-/*---------------------------------------/*
- # OBJECTS
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 /*---------------------------------------*/
-.o-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-}
-
-/*---------------------------------------/*
- # COMPONENTS
+/* COMPONENTS */
 /*---------------------------------------*/
-.c-power-btn {
-  margin: auto;
-  /* margin-top: 20px; */
-  background: #38434a;
-  border-radius: 0.3125rem;
-  color: white;
-  cursor: pointer;
-  font-family: Roboto;
-  font-weight: 800;
-  font-size: 1.9em;
-  height: 4rem;
-  letter-spacing: 0.2px;
-  line-height: 4rem;
-  text-align: center;
-  user-select: none;
-  width: 10rem;
-  transition: none;
-  &:hover {
-    background: $btn-color-hover;
-  }
-  &:active {
-    box-shadow: inset 0px 4px 10px 0px #2d363b;
-    transition: background 0.14s ease-in;
-  }
+.c-nav {
+    background-image: url('../pictures/banner/Banner.png');
+    background-size: cover;
+    background-position: top;
+    background-repeat: repeat-y;
+    height: 12.5vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__ul {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        padding: 24px 160px;
+        flex-direction: row;
+        align-items: center;
+        font-size: $navAndPostCardTextFontSizes;
+    }
 }
-/* opmaak van de bulb */
-.c-fancy-bulb {
-  position: relative;
 
-  &__streaks {
-    position: absolute;
-    background: $dark-yellow;
-    border-radius: 5.5px;
-    height: 11px;
-    z-index: 5000;
-
-    &:after,
-    &:before {
-      position: absolute;
-      background: $dark-yellow;
-      border-radius: 5.5px;
-      height: 11px;
-      z-index: 5000;
-      content: '';
-      display: block;
-    }
-
-    &:before {
-      bottom: 4rem;
-    }
-
-    &:after {
-      top: 4rem;
-    }
-
-    &--left {
-      right: 13.5rem;
-      top: 5.5rem;
-    }
-    &--left:before,
-    &--left:after {
-      left: 1rem;
-    }
-
-    &--right {
-      left: 13.5rem;
-      top: 5.5rem;
-    }
-
-    &--right:before,
-    &--right:after {
-      right: 1rem;
-    }
-
-    &--left:before,
-    &--righ:after {
-      transform: rotate(34deg);
-    }
-
-    &--left:after,
-    &--righ:before {
-      transform: rotate(-34deg);
-    }
-  }
-
-  &__light {
-    transform: translate(50%, 50%) scale(0);
-    opacity: 0;
-    fill: $dark-yellow;
-  }
-}
-.c-room {
-  display: flex;
-  flex-direction: column;
-  background: #a3bcc9;
-  padding: 1em;
-  margin: 0 0.5em;
-
-  &__name {
-    font-family: Roboto;
-    font-size: 1.25em;
-    font-weight: 100;
+.c-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-bottom: 12px;
-    color: #38434a;
-  }
-  &__icon {
-    margin-bottom: 20px;
-  }
-  &--wait {
-    .c-fancy-bulb {
-      &__light {
-        opacity: 1;
-        transform: translate(0) scale(1);
-        transition: all 0.14s ease-in;
-        fill: rgb(248, 238, 203);
-      }
-    }
-  }
-  &--on {
-    .c-fancy-bulb {
-      &__light {
-        opacity: 1;
-        transform: translate(0) scale(1);
-        transition: all 0.14s ease-in;
-        fill: $dark-yellow;
-      }
+    flex-direction: column;
+    padding: 0 240px;
+    margin-bottom: 24px;
+    background-image: url('../pictures/Banner/Banner.png');
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-      &__streaks {
-        &--left {
-          animation: move-left 0.38s ease-out, width-to-zero 0.38s ease-out;
-          animation-delay: 0.14s;
-
-          &:before {
-            animation: width-to-zero 0.38s ease-out, move-up 0.38s ease-out;
-            animation-delay: 0.14s;
-          }
-          &:after {
-            animation: width-to-zero 0.38s ease-out, move-down 0.38s ease-out;
-            animation-delay: 0.14s;
-          }
-        }
-
-        &--right {
-          animation: move-right 0.38s ease-out, width-to-zero 0.38s ease-out;
-          animation-delay: 0.14s;
-          &:before {
-            animation: width-to-zero 0.38s ease-out, move-up 0.38s ease-out;
-            animation-delay: 0.14s;
-          }
-          &:after {
-            animation: width-to-zero 0.38s ease-out, move-down 0.38s ease-out;
-            animation-delay: 0.14s;
-          }
-        }
-      }
+    &__text {
+        color: $PrimaryColor;
+        font-size: $bannerTextFontSizes;
+        font-weight: 400;
+        margin-bottom: 24px;
     }
-    .c-power-btn {
-      background: #58c48d;
-      &:active {
-        box-shadow: inset 0px 6px 8px -1px #41b77b;
-      }
+
+    &__button {
+        background-color: $PrimaryColor;
+        color: $BtnText;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 50px;
+        font-size: $navAndPostCardTextFontSizes;
+        font-weight: 400;
+        margin-top: 24px;
     }
-  }
 }
 
-/*---------------------------------------/*
- # UTILITIES
+.c-floatingBtn {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    bottom: 40px;
+    right: 40px;
+    background-color: $PrimaryColor;
+    color: $BtnText;
+    border-radius: 50px;
+    font-size: $floatingbuttonFontSizes;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__icon {
+        height: 60%;
+        width: 60%;
+        fill: $BtnText;
+    }
+}
+
+.c-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 24px;
+    padding: 24px 160px;
+    color: $BtnText;
+
+    &__search,
+    &__filter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        width: 50%;
+        background-color: $PrimaryColor;
+        padding: 24px;
+        border-radius: 16px;
+
+        &__input {
+            width: 75%;
+            padding: 8px;
+            border-radius: 16px;
+            border: none;
+        }
+
+        &__button {
+            background-color: $BtnText;
+            color: $PrimaryColor;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 16px;
+        }
+    }
+
+    &__filter {
+        width: 20%;
+    }
+}
+
+.c-cocktails {
+    display: flex;
+    justify-content: center;
+    margin: 0 40px;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    &__cocktail {
+        background-color: $PrimaryColor;
+        color: $BtnText;
+        border-radius: 60px;
+        margin-bottom: 20px;
+
+        &__img {
+            width: 400px;
+            height: 400px;
+            resize: both;
+            object-fit: cover;
+            object-position: top;
+            background-color: #fff;
+            border-radius: 60px 60px 0 0;
+        }
+
+        &__info {
+            height: 200px;
+            padding: 20px;
+            gap: 20px;
+            text-align: center;
+
+            &__name {
+                font-size: $postCardTitleFontSizes;
+            }
+
+            &__text {
+                display: flex;
+                text-align: center;
+                justify-content: space-around;
+                flex-direction: row;
+                font-size: $text;
+                padding: 20px 0;
+
+                &__categories {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    &__categoryIcon {
+                        margin-top: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.c-session {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 24px 160px;
+    gap: 24px;
+    color: $BtnText;
+
+    &__actual {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 24px;
+
+        &__inUse,
+        &__temp {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 24px;
+            background-color: $PrimaryColor;
+            padding: 24px;
+            border-radius: 16px;
+        }
+
+        &__inUse {
+            width: 75%;
+
+            &__text {
+                font-size: $subtitleFontSizes;
+            }
+
+            &__name {
+                font-size: $text;
+            }
+        }
+
+        &__temp {
+            width: 25%;
+            text-align: center;
+            padding: 8px 24px;
+
+            &__text,
+            &__compartement {
+                font-size: $navAndPostCardTextFontSizes;
+            }
+
+            &__value {
+                font-size: $subtitleFontSizes;
+            }
+        }
+    }
+
+    &__hist {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 24px;
+
+        &__section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            width: 33%;
+            background-color: $PrimaryColor;
+            padding: 24px;
+            border-radius: 16px;
+        }
+    }
+}
+
+.c-ingredients {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 40px;
+
+    &__current,
+    &__all {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 24px;
+        color: $BtnText;
+
+        &__ingredient {
+            width: 400px;
+            height: 400px;
+            background-color: #fff;
+            border-radius: 60px;
+
+            &__img {
+                width: 400px;
+                height: 400px;
+                resize: both;
+                object-fit: scale-down;
+                object-position: top;
+                border-radius: 60px;
+                position: relative;
+                mask-image: linear-gradient(202deg, rgb(242, 234, 218) 0%, rgba(255, 255, 255, 0) 100%);
+            }
+
+            &__text {
+                color: $BtnText;
+                position: relative;
+                bottom: 5.5rem;
+                left: 2rem;
+
+                &__name {
+                    font-size: $text;
+                }
+
+                &__category {
+                    font-size: $navSelectedAndAddTitleFontSizes;
+                }
+            }
+        }
+    }
+}
+
+.c-postcard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 160px;
+    color: $BtnText;
+    font-size: $navAndPostCardTextFontSizes;
+
+    &__top {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        color: $PrimaryColor;
+        width: 100%;
+        gap: 40px;
+
+        &__back {
+            background-color: $PrimaryColor;
+            width: 100px;
+            height: 100px;
+            color: $BtnText;
+            border-radius: 50px;
+            font-size: $floatingbuttonFontSizes;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &__icon {
+                fill: $BtnText;
+            }
+
+            &__title {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &__text {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        gap: auto;
+        padding: 24px 40px;
+        color: $BtnText;
+        background-color: $PrimaryColor;
+        border-radius: 16px;
+
+        &__text {
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+            padding: 24px;
+            width: 70%;
+
+            &__short {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: row;
+                gap: auto;
+
+                &__info {
+                    gap: 24px;
+                    padding: 24px;
+                    width: 50%;
+
+                    &__text {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: row;
+                        height: 100%;
+                        gap: 24px;
+                        padding: 24px;
+
+                        &__categories {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+
+                            &__categoryIcon {
+                                margin-top: 16px;
+                            }
+                        }
+                    }
+                }
+
+                &__ingredients {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    gap: 24px;
+                    padding: 24px;
+                    width: 50%;
+                }
+            }
+        }
+
+        &__btns {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 24px;
+            width: 30%;
+
+            &__btns {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 24px;
+
+                &__btn {
+                    background-color: $PrimaryColor;
+                    color: $BtnText;
+                    padding: 8px 16px;
+                    border-color: $BtnText;
+                    border-radius: 16px;
+                    width: 100%;
+                    font-size: $navAndPostCardTextFontSizes;
+                }
+
+                &__start {
+                    font-size: $navSelectedAndAddTitleFontSizes;
+                    background-color: $BtnText;
+                    color: $PrimaryColor;
+                }
+            }
+
+            &__img {
+                background-color: #fff;
+                border-radius: 16px;
+                width: 400px;
+                height: 400px;
+            }
+        }
+    }
+}
+
+.c-footer {
+    padding: 24px 160px;
+    text-align: center;
+    font-size: $text;
+}
+
+/*---------------------------------------*/
+/* UTILITIES */
+/*---------------------------------------*/
+.u-noLiStyle {
+    list-style: none;
+}
+
+.u-currentPage {
+    font-size: $navSelectedAndAddTitleFontSizes;
+}
+
+.u-bigIcon {
+    height: 40px;
+    width: 40px;
+}
+
+.u-Icon {
+    height: 24px;
+    width: 24px;
+}
+
+.u-noBanner {
+    background-image: none;
+}
+
+.u-separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: $navAndPostCardTextFontSizes;
+    margin: 0 40px;
+
+    &::before,
+    &::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid $PrimaryColor;
+    }
+
+    &:not(:empty)::before {
+        margin-right: 1rem;
+    }
+
+    &:not(:empty)::after {
+        margin-left: 1rem;
+    }
+}
+
+.u-meta {
+    color: $MetaColor;
+}
+
+/*---------------------------------------*/
+/* MEDIA QUERIES */
 /*---------------------------------------*/
 
-/* body.u-active {
-  background: #f3f7f9;
-} */
+@media (max-width: $breakpoint-xl){
+    .c-postcard__content{
+        flex-direction: column;
+    }
+}
+
+@media (max-width: $breakpoint-lg) {
+    .c-nav {
+        height: auto;
+        background-image: none;
+        &__ul {
+            padding: 24px 40px;
+            flex-direction: column;
+        }
+    }
+
+    .c-hero {
+        padding: 0 40px;
+    }
+
+    .c-session {
+        &__actual {
+            flex-direction: column;
+            gap: 24px;
+            width: 100%;
+
+            &__inUse,
+            &__temp {
+                width: 100%;
+            }
+        }
+
+        &__hist {
+            flex-direction: column;
+            gap: 24px;
+            width: 100%;
+
+            &__section {
+                width: 100%;
+            }
+        }
+    }
+
+    .c-postcard {
+        &__content {
+            flex-direction: column;
+            gap: 24px;
+
+            &__text {
+                width: 100%;
+
+                &__short {
+                    flex-direction: column;
+                    gap: 24px;
+
+                    &__info {
+                        width: 100%;
+                    }
+
+                    &__ingredients {
+                        width: 100%;
+                    }
+                }
+            }
+
+            &__btns {
+                width: 100%;
+            }
+        }
+    }
+
+}

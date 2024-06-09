@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Postcard</title>
+  <link rel="stylesheet" href="style/screen.css">
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+  <script src="script/datahandler.js"></script>
+  <script src="script/app.js"></script> 
+</head>
+
+<body>
+    <div class="c-postcard">
+        <div class="c-postcard__top">
+            <a href="main.html">
+            <div class="c-postcard__top__back">
+                    <img src="pictures/Icons/arrow-left.svg" alt="back" class="c-postcard__top__back__icon">
+                </div>
+            </a>
+            <div class="c-postcard__top__title">
+                <h1 class="c-postcard__top__title__text">Ingredient info</h1>
+            </div>
+        </div>
+        <div class="c-postcard__content">
+            <div class="c-postcard__content__text">
+                <div class="c-postcard__content__text__short">
+                    <div class="c-postcard__content__text__short__info">
+                        <div class="c-postcard__content__text__short__info__name">
+                            <span class="u-meta">Name: </span><span>Martini</span>
+                        </div>
+                        <div class="c-postcard__content__text__short__info__type">
+                            <span class="u-meta">Type: </span><span>Cocktail</span>
+                        </div>
+                        <div class="c-postcard__content__text__short__info__alcoholic">
+                            <span class="u-meta">Alcoholic: </span><span>Yes</span>
+                        </div>
+                        <div class="c-postcard__content__text__short__info__glass">
+                            <span class="u-meta">Glass: </span><span>Cocktail glass</span>
+                        </div>
+                        <div class="c-postcard__content__text__short__info__color">
+                            <span class="u-meta">Color: </span><span>See Through</span>
+                        </div>
+                    </div>
+                    <div class="c-postcard__content__text__short__ingredients">
+                        <span class="u-meta">Ingredients</span>
+                        <ul class="u-noLiStyle">
+                            <li>2 1/2 ounces gin</li>
+                            <li>1/2 ounce dry vermouth</li>
+                            <li>Ice cubes</li>
+                            <li>Lemon twist or olive (for garnish)</li>
+                        </ul>
+                    </div>                                        
+                </div>
+                <div class="c-postcard__content__text__long">
+                    <span class="u-meta">Instructions</span>
+                    <p>Chill a Martini glass in the freezer. In a mixing glass with ice, combine 2 1/2 ounces of gin and 1/2 ounce of dry vermouth. Stir for 30 seconds, then strain into the chilled glass. Garnish with a lemon twist or an olive. Enjoy!</p>
+                </div>
+                
+            </div>
+            <div class="c-postcard__content__btns">
+                <div class="c-postcard__content__btns__img">
+                    <img src="pictures/Cocktails/Martini.png" alt="Martini">
+                </div>
+
+                <div class="c-postcard__content__btns__btns">
+                    <button class="c-postcard__content__btns__btns__edit c-postcard__content__btns__btns__btn">EDIT</button>
+                    <button class="c-postcard__content__btns__btns__delete c-postcard__content__btns__btns__btn">DELETE</button>
+                    <button class="c-postcard__content__btns__btns__start c-postcard__content__btns__btns__btn">START</button>
+                </div>             
+            </div>
+        </div>        
+    </div>
+</body>
+
+</html>
