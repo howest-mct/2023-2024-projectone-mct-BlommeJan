@@ -36,31 +36,17 @@ class ServoMotor:
 
 # Example usage:
 if __name__ == "__main__":
-    servo1 = ServoMotor(24)
-    servo2 = ServoMotor(23)
-    servo3 = ServoMotor(18)
+    servo1 = ServoMotor(18)
     try:
         while True:
-            servo1.set_angle(0)
-            servo2.set_angle(0)
-            servo3.set_angle(0)
-            time.sleep(1)
-            servo1.set_angle(90)
-            servo2.set_angle(90)
-            servo3.set_angle(90)
-            time.sleep(1)
-            servo1.set_angle(180)
-            servo2.set_angle(180)
-            servo3.set_angle(180)
-            time.sleep(1)
-            servo1.set_angle(90)
-            servo2.set_angle(90)
-            servo3.set_angle(90)
-            time.sleep(1)
+            for angle in range(0, 181, 10):
+                servo1.set_angle(angle)
+                time.sleep(0.1)
+            for angle in range(180, -1, -10):
+                servo1.set_angle(angle)
+                time.sleep(0.1)
     except KeyboardInterrupt as err:
         print(err)
     finally:
         del servo1
-        del servo2
-        del servo3
         print("Cleaning up Pi")
