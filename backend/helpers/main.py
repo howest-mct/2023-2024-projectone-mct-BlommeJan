@@ -4,7 +4,7 @@ from kleur import Kleur as kleur
 from lcdPcf import lcd as lcd
 from trilMotorPwm import DCMotor as vibrator
 from onewire import ow as onewire
-from pumps import Pcf8574 as pump
+from pumps import Pumps as pump
 from servomotor import ServoMotor as servo
 from UltraSonic import HC_SR04 as ultrasonic
 import os
