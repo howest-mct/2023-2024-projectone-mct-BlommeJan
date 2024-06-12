@@ -1,7 +1,8 @@
 from RPi import GPIO
 import time
 
-
+# 100 milliliters = 85 seconds
+# 1 milliliter = 0.85 seconds
 class Pumps:
     def __init__(self, m1=12, m2=16, m3=20, m4=21) -> None:
         self.m1 = m1
@@ -37,8 +38,8 @@ if __name__ == "__main__":
         while True:
             pumps.pump_on(0)
             time.sleep(10)
-            pumps.pump_off(0)
-            time.sleep(2)
+            # pumps.pump_off(0)
+            # time.sleep(2)
     except KeyboardInterrupt:
         print("Quitting...")
     finally:
