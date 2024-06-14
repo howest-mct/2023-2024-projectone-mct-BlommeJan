@@ -1,7 +1,7 @@
 # TODO: ignore venv
 
 # Video files (general rule)
-*.mp4
+# *.mp4 # I need this so i can commit my videos of the user testing
 *.mov
 *.avi
 *.wmv
