@@ -1,12 +1,12 @@
-# Projectgegevens
+# Dionyshake
 
-**VOORNAAM NAAM:** A B
+**VOORNAAM NAAM: Jan Blomme**
 
-**Sparringpartner:** C D
+**Sparringpartner:** Dries Gegreef
 
-**Projectsamenvatting in max 10 woorden:** E
+**Projectsamenvatting in max 10 woorden:** een smart cocktailmachine die je vanop afstand kan besturen
 
-**Projecttitel:** F
+**Projecttitel:** Dionyshake
 
 # Tips voor feedbackgesprekken
 
@@ -32,38 +32,122 @@
 
 # Feedforward gesprekken
 
-## Gesprek 1 (Datum: xx/xx/2024)
+## Gesprek 1 (Datum: 24/05/2024)
 
-Lector:
-
-Vragen voor dit gesprek:
-
-- vraag 1: V
-
-Dit is de feedback op mijn vragen.
-
-- feedback 1: G
-
-## Gesprek 2 (Datum: xx/xx/2024)
-
-Lector:
+Lector: Geert Desloovre
 
 Vragen voor dit gesprek:
 
-- vraag 1: V
+- vraag 1: Hoe ik een motor van 24v moet aansturen met de rPI
 
 Dit is de feedback op mijn vragen.
 
-- feedback 1: G
+- feedback 1: relais
 
-## Gesprek 3 (Datum: xx/xx/2024)
+## Gesprek 2 (Datum: 24/05/2024)
 
-Lector:
+Lector: Frederik Waeyaert
 
 Vragen voor dit gesprek:
 
-- [x] vraag 1: V
+- vraag 1: Is de tabel correct genormalliseerd?
 
 Dit is de feedback op mijn vragen.
 
-- feedback 1: G
+- feedback 1: Ja, perfect gedaan, maar de DB heeft wel veel kolommen en tables waardoor het moelijker kan zijn voor te querriën.
+
+
+## Gesprek 3 (Datum: 28/05/2024) MVP
+
+Lector: Tijn, Frederik, Christof
+
+Vragen voor dit gesprek:
+
+- vraag 1:  Is alles in orde
+
+Dit is de feedback op mijn vragen.
+
+- feedback 1: DB: Te veel ingredienten, tussen tabel ingredienten en amount versimpelen op colors en drink type (klopt wel). Temperatuur en kleur loggen in database (bijhouden van elke cocktail order en daarbij zetten?). Temp in Celsius en Fahrenheit is niet goed.
+- feedback 2: Fritzing: Losse draden. Kabels niet grijs maken. Geen overlappende kabels, alles opkuisen.
+- feedback 3: Figma: Font in navigation (mag serif). Denk aan responsiveness.
+
+## Gesprek 4 (Datum: 31/05/2024) 
+
+Lector: Geert Desloovere
+
+Vragen voor dit gesprek:
+
+- vraag 1:  PI is kapot
+
+Dit is de feedback op mijn vragen.
+
+- feedback 1: Transistor, PI zijn kapot en het lag aan mijn W1 or transistor.
+
+## Gesprek 4 (Datum: 04/06/2024) MVP
+
+Lector: Frederik, Christof
+
+Vragen voor dit gesprek:
+
+- vraag 1:  Is alles in orde
+
+Dit is de feedback op mijn vragen.
+
+- feedback 1: meer met branches werken op github
+- feedback 2: een tandje bijsteken
+
+## Gesprek 5 (Datum 07/06/2024)
+
+Lector: Geert
+
+Vragen voor dit gesprek:
+
+- vraag 1:  Hoe gebruik ik deze voeding
+
+Dit is de feedback op mijn vragen.
+
+- feedback 1: op de mannier dat Geert mij getoond heefd.
+
+## Gesprek 6 (Datum 10/06/2024)
+
+Lector: Geert
+
+Vragen voor dit gesprek:
+
+- vraag 1:  computerfan laten werken
+
+Dit is de feedback op mijn vragen.
+
+- feedback 1: het werkt door de pinnen correct te plaatsen
+
+## Gesprek 7 (Datum 10/06/2024)
+
+Lector: Tijn
+
+Vragen voor dit gesprek:
+
+- vraag 1:  Help, mijn pompjes overhitten en werken niet als het moet.
+
+Dit is de feedback op mijn vragen.
+
+- feedback 1: laten we de pcf ervantussen halen en het gewoon op GPIO pinnen doen.
+
+## Gesprek 8 (Datum 11/06/2024) MVP
+
+Lector: Geert, Claudia, Dieter
+
+Vragen voor dit gesprek:
+
+- vraag 1:  Alles in orde
+
+Dit is de feedback op mijn vragen.
+
+- feedback 1: je hebt achterstand ivm de criterea.
+
+## Gesprek 9 (Datum 12/06/2024 op 13/06/2024) Study night 
+
+Lector: Tijn, Pieter-Jan
+
+Vragen voor dit gesprek:
+
+- onderwerp 1:  optimalistie van mijn schakeling
