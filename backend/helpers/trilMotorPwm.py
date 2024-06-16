@@ -47,7 +47,7 @@ if __name__ == "__main__":
         while True:
             print("Turning on motor")
             motor.changeSpeed(25)
-            sleep(10)
+            sleep(5)
             print("Turning off motor")
             motor.stop()
             sleep(5)

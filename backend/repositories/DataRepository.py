@@ -10,40 +10,8 @@ class DataRepository:
             gegevens = request.form.to_dict()
         return gegevens
 
-    # ------------------------------ #
-    #  - - - - - VOORBEELD - - - - - #
-
-    @staticmethod
-    def read_status_lampen():
-        sql = "SELECT * from lampen"
-        return Database.get_rows(sql)
-
-    @staticmethod
-    def read_status_lamp_by_id(id):
-        sql = "SELECT * from lampen WHERE id = %s"
-        params = [id]
-        return Database.get_one_row(sql, params)
-
-    @staticmethod
-    def update_status_lamp(id, status):
-        sql = "UPDATE lampen SET status = %s WHERE id = %s"
-        params = [status, id]
-        return Database.execute_sql(sql, params)
-
-    @staticmethod
-    def update_status_alle_lampen(status):
-        sql = "UPDATE lampen SET status = %s"
-        params = [status]
-        return Database.execute_sql(sql, params)
-
-    @staticmethod
-    def insert_temperature(temp):
-        sql = "INSERT INTO logtemp (dateTime, tempInC) VALUES (NOW(), %s)"
-        params = [temp]
-        return Database.execute_sql(sql, params)
-    
-    # ------------------------------ #
-    #  - - - - - COCKTAILS - - - - - #
+    # ------------------------------- #
+    #  - - - - - - READ - - - - - - - #
 
     @staticmethod
     def read_all_cocktails():
@@ -66,3 +34,28 @@ class DataRepository:
     def read_ingredients():
         sql = "SELECT i.strName AS ingredient_name, cat.strCategory AS category_name, i.picture AS ingredient_picture FROM tblingredients i JOIN tblingredientcategories cat ON i.categoryID = cat.id;"
         return Database.get_rows(sql)
+    
+    @staticmethod
+    def read_history():
+        sql = "select  c.strDrink, lo.dateTime from logorder lo join tblcocktails c on lo.cocktailId = c.idDrink limit 10;"
+        return Database.get_rows(sql)
+    
+    # read stats
+
+    @staticmethod
+    def total_cocktails_drunk():
+        sql = "SELECT COUNT(*) AS total_cocktails_drunk FROM logorder;"
+        return Database.get_one_row(sql)
+
+    @staticmethod
+    def total_shaken_time():
+        sql = "SELECT SUM(c.intShakeDuration) AS total_time_shaken FROM logorder l JOIN tblcocktails c ON l.cocktailId = c.idDrink;"
+        return Database.get_one_row(sql)
+    
+    @staticmethod
+    def different_ingredients_tasted():
+        sql = "SELECT COUNT(DISTINCT i.id) AS different_ingredients_tasted FROM logorder l JOIN tblcocktailrecipes r ON l.cocktailId = r.idCocktail JOIN tblingredients i ON i.id IN (r.idIngredient1, r.idIngredient2, r.idIngredient3, r.idIngredient4, r.idIngredient5, r.idIngredient6, r.idIngredient7, r.idIngredient8, r.idIngredient9);"
+        return Database.get_one_row(sql)
+    
+    @staticmethod
+    def 

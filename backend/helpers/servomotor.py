@@ -16,9 +16,10 @@ class ServoMotor:
 
     def __init__(self, servo_pin=21):
         GPIO.setmode(GPIO.BCM)
+        GPIO.setwarnings(False)  # Disable GPIO warnings
         GPIO.setup(servo_pin, GPIO.OUT)
         self.PWM_servo = GPIO.PWM(servo_pin, 50)
-        self.PWM_servo.start(0)
+        self.PWM_servo.start(7.5)  # Start at 90 degree position
 
     # angle: 0 - 180
     def set_angle(self, angle):
@@ -27,10 +28,12 @@ class ServoMotor:
         return: None
         
         '''
-        duty_cycle = ((angle / 180.0) * 9) + 3
+        duty_cycle = ((angle / 180.0) * 10) + 2.5
         self.PWM_servo.ChangeDutyCycle(duty_cycle)
+        time.sleep(0.5)  # Allow time for servo to move
 
-    def __del__(self):
+    def cleanup(self):
+        self.PWM_servo.stop()
         GPIO.cleanup()
 
 
@@ -38,13 +41,11 @@ class ServoMotor:
 if __name__ == "__main__":
     servo1 = ServoMotor(18)
     try:
-        while True:
-            servo1.set_angle(0)
-            time.sleep(1)
-            servo1.set_angle(90)
-            time.sleep(1)
+        servo1.set_angle(80)
+        time.sleep(5)
+        servo1.set_angle(0)
     except KeyboardInterrupt as err:
         print(err)
     finally:
-        del servo1
+        servo1.cleanup()
         print("Cleaning up Pi")
