@@ -40,8 +40,6 @@ class DataRepository:
         sql = "select  c.strDrink, lo.dateTime from logorder lo join tblcocktails c on lo.cocktailId = c.idDrink limit 10;"
         return Database.get_rows(sql)
     
-    # read stats
-
     @staticmethod
     def total_cocktails_drunk():
         sql = "SELECT COUNT(*) AS total_cocktails_drunk FROM logorder;"
@@ -58,13 +56,49 @@ class DataRepository:
         return Database.get_one_row(sql)
     
     @staticmethod
-    def fav_ingredient()
+    def fav_ingredient():
         sql = "SELECT i.strName AS ingredient, COUNT(*) AS times_used FROM tblcocktailrecipes r JOIN tblingredients i ON i.id IN (r.idIngredient1, r.idIngredient2, r.idIngredient3, r.idIngredient4, r.idIngredient5, r.idIngredient6, r.idIngredient7, r.idIngredient8, r.idIngredient9) GROUP BY i.strName ORDER BY times_used DESC LIMIT 1;"
         return Database.get_one_row(sql)
-
-    # ------------------------------- #
 
     @staticmethod
     def read_temp_history():
         sql = "SELECT * FROM logtemp LIMIT 10;"
         return Database.get_rows(sql)
+    
+    # CREATE
+
+    @staticmethod
+    def create_temp_log(temperature):
+        sql = "INSERT INTO logtemp (temperature) VALUES (%s);"
+        params = [temperature]
+        return Database.execute_sql(sql, params)
+    
+    @staticmethod
+    def create_order_log(cocktail_id):
+        sql = "INSERT INTO logorder (cocktailId, scannedColor) VALUES (%s, %s);"
+        params = [cocktail_id, "ERROR"]
+        return Database.execute_sql(sql, params)
+    
+    # UPDATE
+
+    @staticmethod
+    def update_order_log(id, color):
+        sql = "UPDATE logorder SET scannedColor = %s WHERE id = %s;"
+        params = [color, id]
+        return Database.execute_sql(sql, params)
+    
+    # DELETE
+    @staticmethod
+    def delete_temp_log():
+        sql = "DELETE FROM logtemp;"
+        return Database.execute_sql(sql)
+    
+    @staticmethod
+    def delete_order_log():
+        sql = "DELETE FROM logorder;"
+        return Database.execute_sql(sql)
+    
+    @staticmethod
+    def delete_all_logs():
+        sql = "DELETE FROM logorder; DELETE FROM logtemp;"
+        return Database.execute_sql(sql)
