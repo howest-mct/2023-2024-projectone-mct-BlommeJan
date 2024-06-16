@@ -58,4 +58,13 @@ class DataRepository:
         return Database.get_one_row(sql)
     
     @staticmethod
-    def 
+    def fav_ingredient()
+        sql = "SELECT i.strName AS ingredient, COUNT(*) AS times_used FROM tblcocktailrecipes r JOIN tblingredients i ON i.id IN (r.idIngredient1, r.idIngredient2, r.idIngredient3, r.idIngredient4, r.idIngredient5, r.idIngredient6, r.idIngredient7, r.idIngredient8, r.idIngredient9) GROUP BY i.strName ORDER BY times_used DESC LIMIT 1;"
+        return Database.get_one_row(sql)
+
+    # ------------------------------- #
+
+    @staticmethod
+    def read_temp_history():
+        sql = "SELECT * FROM logtemp LIMIT 10;"
+        return Database.get_rows(sql)
