@@ -39,12 +39,10 @@ if __name__ == "__main__":
     servo1 = ServoMotor(18)
     try:
         while True:
-            for angle in range(0, 181, 10):
-                servo1.set_angle(angle)
-                time.sleep(0.1)
-            for angle in range(180, -1, -10):
-                servo1.set_angle(angle)
-                time.sleep(0.1)
+            servo1.set_angle(0)
+            time.sleep(1)
+            servo1.set_angle(90)
+            time.sleep(1)
     except KeyboardInterrupt as err:
         print(err)
     finally:

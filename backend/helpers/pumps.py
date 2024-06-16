@@ -36,10 +36,11 @@ if __name__ == "__main__":
     try:
         pumps = Pumps()
         while True:
-            pumps.pump_on(0)
-            time.sleep(10)
-            # pumps.pump_off(0)
-            # time.sleep(2)
+            for i in range(4):
+                pumps.pump_on(i)
+                time.sleep(1)
+                pumps.pump_off(i)
+                time.sleep(1)
     except KeyboardInterrupt:
         print("Quitting...")
     finally:

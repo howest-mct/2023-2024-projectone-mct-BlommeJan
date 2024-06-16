@@ -43,7 +43,7 @@ class Main:
         self.servo.set_angle(0)
 
     def pump_amount(self,pump, amount):
-        amount = amount * 0.85 # 1 milliliter = 0.85 seconds
+        amount = amount * 0.85 * 30# 1 milliliter = 0.85 seconds; 1 second = 30 milliliters; 30 milliliters = +- 1 oz
         self.pump.pump_on(pump)
         sleep(amount)
         self.pump.pump_off(pump)
@@ -67,11 +67,11 @@ class Main:
             return 0
         
     def shake(self, duration):
-        for i in range(0, 101, 5):
+        for i in range(0, 26, 5):
             vibrator.changeSpeed(i)
             sleep(0.1)
         sleep(duration)
-        for i in range(100, -1, -5):
+        for i in range(26, -1, -5):
             vibrator.changeSpeed(i)
             sleep(0.1)
 
@@ -80,15 +80,16 @@ class Main:
     #-----------------------------------#
 
     def make_cocktail(self, duration, bottle1, amount1, bottle2 = None, amount2 = None, bottle3 = None, amount3 = None, bottle4 = None, amount4 = None):
-        if self.cup_available():
-            self.open_lid()
-            self.pump_amount(bottle1, amount1)
-            if bottle2 != None:
-                self.pump_amount(bottle2, amount2)
-            if bottle3 != None:
-                self.pump_amount(bottle3, amount3)
-            if bottle4 != None:
-                self.pump_amount(bottle4, amount4)
+        # if self.cup_available(): # check if cup is available but this for some reason does not work anymore and always returns 0
+        self.open_lid()
+        self.pump_amount(bottle1, amount1)
+        if bottle2 != None:
+            self.pump_amount(bottle2, amount2)
+        if bottle3 != None:
+            self.pump_amount(bottle3, amount3)
+        if bottle4 != None:
+            self.pump_amount(bottle4, amount4)
+        if duration != 0:
             self.close_lid()
             self.shake(duration)
             self.open_lid()
@@ -99,8 +100,12 @@ class Main:
             return 1
         else:
             return 0
-        
-    
+
+    def get_temperature(self) -> float:
+        return self.get_temp()
+
+    def cleanPumps(self):
+        self.clean_pump()
     
 
     #-----------------------------------#
