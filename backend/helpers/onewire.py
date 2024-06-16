@@ -28,7 +28,7 @@ if __name__ == "__main__":
         while True:
             t = ow.read_temperature()
             temp.append(t)
-            print(f"Temperature: {t} °C")
+            print(f"Temperature: {t:.1f} °C")
             time.sleep(1)
 
             # plt.plot(temp)

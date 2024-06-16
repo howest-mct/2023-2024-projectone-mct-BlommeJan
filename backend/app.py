@@ -7,7 +7,7 @@ from flask_cors import CORS
 from helpers.onewire import OneWire
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'HELLOTHISISSCERET'
+app.config['SECRET_KEY'] = 'DionyShakeItBaby!'
 
 # ping interval forces rapid B2F communication
 socketio = SocketIO(app, cors_allowed_origins="*",
