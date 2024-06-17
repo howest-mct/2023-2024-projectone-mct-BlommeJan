@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ingredients</title>
+  <link rel="stylesheet" href="style/screen.css">
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+  <script src="script/datahandler.js"></script>
+  <script src="script/app.js"></script> 
+</head>
+
+<body>
+    <div class="c-dropdowns">
+        <a class="c-back-link" href="ingredients.html"></a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Ingredients
+        </a>
+        <select class="c-dropdown" id="ingredient1">
+            <option value="ingredient1-option1">Ingredient 1 Option 1</option>
+            <option value="ingredient1-option2">Ingredient 1 Option 2</option>
+            <option value="ingredient1-option3">Ingredient 1 Option 3</option>
+        </select>
+        <select class="c-dropdown" id="ingredient2">
+            <option value="ingredient2-option1">Ingredient 2 Option 1</option>
+            <option value="ingredient2-option2">Ingredient 2 Option 2</option>
+            <option value="ingredient2-option3">Ingredient 2 Option 3</option>
+        </select>
+        <select class="c-dropdown" id="ingredient3">
+            <option value="ingredient3-option1">Ingredient 3 Option 1</option>
+            <option value="ingredient3-option2">Ingredient 3 Option 2</option>
+            <option value="ingredient3-option3">Ingredient 3 Option 3</option>
+        </select>
+        <select class="c-dropdown" id="ingredient4">
+            <option value="ingredient4-option1">Ingredient 4 Option 1</option>
+            <option value="ingredient4-option2">Ingredient 4 Option 2</option>
+            <option value="ingredient4-option3">Ingredient 4 Option 3</option>
+        </select>
+    </div>
+    <hr>
+    <button class="c-btn js-ingredient-btn">Set ingredients</button>
+    
+    <button class="c-btn">Clean Pumps</button>
+  <footer class="c-footer">
+    <p>© 2024 - Cocktail shaker - Blomme Jan</p>
+  </footer>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 from RPi import GPIO
 from time import sleep, time
-from lcdPcf import lcd as lcd
+# from lcdPcf import lcd as lcd
 from ip import IPAddress
 import os
 
@@ -11,7 +11,7 @@ class ButtonHandler:
         self.kill_time = kill_time
         self.press_time = 0
         self.ip = IPAddress()  # Instantiate IPAddress here
-        self.lcd = lcd()
+        # self.lcd = lcd()
         self.setup()
 
     def setup(self):
@@ -25,17 +25,17 @@ class ButtonHandler:
         else:  # Button released
             if time() - self.press_time >= self.kill_time:  # Button held for 5 seconds
                 print("Shutting down...")
-                self.lcd.lcd_clear()
-                self.lcd.lcd_display_string("BYE  BYE", 1, 4)
-                self.lcd.lcd_display_string("Shutting down...", 2)
+                # self.lcd.lcd_clear()
+                # self.lcd.lcd_display_string("BYE  BYE", 1, 4)
+                # self.lcd.lcd_display_string("Shutting down...", 2)
                 os.system("sudo shutdown -h now")
 
             elif time() - self.press_time >= self.ip_time:
                 print("IP address")
                 print(self.ip())  # Call the IPAddress instance
-                self.lcd.lcd_clear()
-                self.lcd.lcd_display_string("IP Address:", 1)
-                self.lcd.lcd_display_string(self.ip(), 2)
+                # self.lcd.lcd_clear()
+                # self.lcd.lcd_display_string("IP Address:", 1)
+                # self.lcd.lcd_display_string(self.ip(), 2)
                 
 
     def cleanup(self):

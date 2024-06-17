@@ -37,7 +37,7 @@ class DataRepository:
     
     @staticmethod
     def read_history():
-        sql = "select  c.strDrink, lo.dateTime from logorder lo join tblcocktails c on lo.cocktailId = c.idDrink limit 10;"
+        sql = "select c.strDrink, lo.dateTime from logorder lo join tblcocktails c on lo.cocktailId = c.idDrink limit 10;"
         return Database.get_rows(sql)
     
     @staticmethod
@@ -88,6 +88,7 @@ class DataRepository:
         return Database.execute_sql(sql, params)
     
     # DELETE
+    
     @staticmethod
     def delete_temp_log():
         sql = "DELETE FROM logtemp;"

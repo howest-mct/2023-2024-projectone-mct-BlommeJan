@@ -10,6 +10,7 @@
   <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
   <script src="script/datahandler.js"></script>
   <script src="script/app.js"></script> 
+  <script src="script/session.js"></script>
 </head>
 
 <body>
@@ -30,7 +31,7 @@
         </div>
         <div class="c-session__actual__temp">
           <p class="c-session__actual__temp__text">Temperature</p>
-          <p class="c-session__actual__temp__value">-5°C</p>
+          <p class="c-session__actual__temp__value js-temp">...</p>
           <p class="c-session__actual__temp__compartement">In storage</p>
         </div>
       </div>
@@ -38,8 +39,8 @@
         <div class="c-session__hist__history c-session__hist__section">
           <h2 class="c-session__hist__history__title">History</h2>
           <div class="c-session__hist__history__table">
-            <table class="c-session__hist__history__table__table">
-              <tr class="c-session__hist__history__table__table__head">
+            <table class="c-session__hist__history__table__table js-history-table">
+              <!-- <tr class="c-session__hist__history__table__table__head">
                 <th class="c-session__hist__history__table__table__head__header">Cocktail</th>
                 <th class="c-session__hist__history__table__table__head__header">Date</th>
               </tr>
@@ -50,7 +51,7 @@
               <tr class="c-session__hist__history__table__table__data">
                 <td class="c-session__hist__history__table__table__data__data">Margarita</td>
                 <td class="c-session__hist__history__table__table__data__data">2024-05-31 6.00PM</td>
-              </tr>
+              </tr> -->
             </table>
           </div>
         </div>

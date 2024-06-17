@@ -9,15 +9,6 @@ const listenToSocket = function () {
   });
 };
 
-socketio.on("BTF_temp", function (value) {
-  console.log(value.temp)
-  temp = document.querySelector('.js-temp-value').innerHTML
-  console.log(temp)
-  temp = value.temp
-
-  document.querySelector('.js-temp-value').innerHTML = temp
-})
-
 const init = function () {
   console.info('DOM geladen');
   listenToUI();

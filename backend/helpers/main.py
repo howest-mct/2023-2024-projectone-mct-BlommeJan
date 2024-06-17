@@ -1,12 +1,12 @@
 import RPi.GPIO as GPIO
 from time import sleep, time
-from kleur import Kleur as kleur
-from lcdPcf import lcd as lcd
-from trilMotorPwm import DCMotor as vibrator
-from onewire import ow as onewire
-from pumps import Pumps as pump
-from servomotor import ServoMotor as servo
-from UltraSonic import HC_SR04 as ultrasonic
+from helpers.kleur import Kleur as kleur
+# from helpers.lcdPcf import lcd as lcd
+from helpers.trilMotorPwm import DCMotor as vibrator
+from helpers.onewire import OneWire as onewire
+from helpers.pumps import Pumps as pump
+# from helpers.servomotor import ServoMotor as servo
+from helpers.UltraSonic import HC_SR04 as ultrasonic
 import os
 
 class Main:
@@ -20,27 +20,31 @@ class Main:
 
     def setup(self):
         self.kleur = kleur(s0=5, s1=6, s2=13, s3=19, out=26)
-        self.lcd = lcd()
+        # # self.lcd = lcd()
         self.vibrator = vibrator(25)
         self.onewire = onewire("28-8590fd1d64ff")
-        self.pump = pump(adress=0x3c) 
-        self.servo = servo(18)
+        # self.pump = pump(address=0x3c) 
+        self.pump = pump(m1=12, m2=16, m3=20, m4=21)
+        # # self.servo = servo(18)
         self.ultrasonic = ultrasonic(17,27)
 
     def start(self):
-        self.lcd.lcd_clear()
-        self.lcd.lcd_display_string("Dionyshake", 1, 2)
-        self.lcd.lcd_display_string("Let's drink!", 2, 2)
+        pass
+        # # self.lcd.lcd_clear()
+        # # self.lcd.lcd_display_string("Dionyshake", 1, 2)
+        # # self.lcd.lcd_display_string("Let's drink!", 2, 2)
 
     #-----------------------------------#
     #              actions              #
     #-----------------------------------#    
 
     def close_lid(self):
-        self.servo.set_angle(90)
+        pass
+        # self.servo.set_angle(0)
 
     def open_lid(self):
-        self.servo.set_angle(0)
+        pass
+        # self.servo.set_angle(80)
 
     def pump_amount(self,pump, amount):
         amount = amount * 0.85 * 30# 1 milliliter = 0.85 seconds; 1 second = 30 milliliters; 30 milliliters = +- 1 oz
@@ -112,12 +116,12 @@ class Main:
     #              cleanup              #
     #-----------------------------------#                 
 
-    def __del__(self):
-        del self.kleur
-        del self.lcd
-        del self.vibrator
-        del self.onewire
-        del self.pump
-        del self.servo
-        del self.ultrasonic
+    # def __del__(self):
+    #     del self.kleur
+    #     # del self.lcd
+    #     del self.vibrator
+    #     del self.onewire
+    #     del self.pump
+        # del self.servo
+    #     del self.ultrasonic
 
