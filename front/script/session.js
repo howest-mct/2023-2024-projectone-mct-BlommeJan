@@ -18,19 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
         </tr>
         `
 
-        for (const history of resp[0]) {
+        for (const history of resp) {
             console.log(history["strDrink"])
             historyContent += `
             <tr class="c-session__hist__history__table__table__row">
-                <td class="c-session__hist__history__table__table__row__data">${history.strDrink}</td>
-                <td class="c-session__hist__history__table__table__row__data">${history.dateTime}</td>
+                <td class="c-session__hist__history__table__table__row__data">${history["strDrink"]}</td>
+                <td class="c-session__hist__history__table__table__row__data">${history["dateTime"]}</td>
             </tr>
             `
         }
+        historyTable.innerHTML = historyContent
     })
 
-    console.log(historyContent)
-
-    historyTable.innerHTML = historyContent
 });
-
