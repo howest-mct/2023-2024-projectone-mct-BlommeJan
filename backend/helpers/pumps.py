@@ -4,7 +4,7 @@ import time
 # 100 milliliters = 85 seconds
 # 1 milliliter = 0.85 seconds
 class Pumps:
-    def __init__(self, m1=12, m2=16, m3=20, m4=21) -> None:
+    def __init__(self, m1=20, m2=21, m3=16, m4=12) -> None:
         self.m1 = m1
         self.m2 = m2
         self.m3 = m3
@@ -32,15 +32,37 @@ class Pumps:
         GPIO.cleanup()
 
 # example code
+# if __name__ == "__main__":
+#     try:
+#         pumps = Pumps()
+#         amount = 2
+#         amount = amount * 0.85 * 3# 1 milliliter = 0.85 seconds; 1 second = 30 milliliters; 30 milliliters = +- 1 oz
+#         # print(amount)
+#         pumps.pump_on(0)
+#         time.sleep(amount)
+#         pumps.pump_off(0)
+#         amount = .5
+#         amount = amount * 0.85 * 3
+#         pumps.pump_on(3)
+#         time.sleep(amount)
+#         pumps.pump_off(3)
+#     except KeyboardInterrupt:
+#         print("Quitting...")
+#     finally:
+#         del pumps
+#         print("Cleaning up Pi")
+
+
 if __name__ == "__main__":
     try:
         pumps = Pumps()
-        while True:
-            for i in range(4):
-                pumps.pump_on(i)
-                time.sleep(1)
-                pumps.pump_off(i)
-                time.sleep(1)
+        amount = 2
+        amount = amount * 0.85 * 3# 1 milliliter = 0.85 seconds; 1 second = 30 milliliters; 30 milliliters = +- 1 oz
+        # print(amount)
+        pumps.pump_all_on()
+        time.sleep(amount)
+        pumps.pump_all_off()
+        
     except KeyboardInterrupt:
         print("Quitting...")
     finally:
