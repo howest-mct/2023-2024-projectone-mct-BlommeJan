@@ -446,20 +446,26 @@ a {
 .c-postcard__content__btns__img {
   background-color: #fff;
   border-radius: 16px;
+}
+.c-postcard__content__btns__img__img {
   width: 400px;
   height: 400px;
+  resize: both;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
 }
 
 .c-dropdowns {
   max-width: 600px;
-  margin: 20px auto;
   padding: 20px;
-  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .c-dropdowns__back {
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
 }
@@ -469,8 +475,8 @@ a {
   margin-right: 10px;
 }
 .c-dropdowns__back__text {
-  font-size: 18px;
-  color: #59503E;
+  font-size: 1.5rem;
+  color: #F2EADA;
 }
 .c-dropdowns__back a {
   display: flex;
