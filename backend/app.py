@@ -50,9 +50,19 @@ def start_thread():
 def hallo():
     return "Server is running, er zijn momenteel geen API endpoints beschikbaar."
 
+@app.route('/get_temp_history/', methods=['GET'])
+def get_temp_history():
+    data = DataRepository.read_temp_history()
+    return jsonify(data)
+0
 @app.route(endpoint + '/history/', methods=['GET'])
 def get_history():
     data = DataRepository.read_history()
+    return jsonify(data)
+
+@app.route(endpoint + '/cocktails/', methods=['GET'])
+def get_cocktails():
+    data = DataRepository.read_all_cocktails()
     return jsonify(data)
 
 @app.route(endpoint + '/cocktail/<cocktail_id>', methods=['GET'])
@@ -60,9 +70,10 @@ def get_cocktail_by_id(cocktail_id):
     data = DataRepository.read_cocktail_by_id(cocktail_id)
     return jsonify(data)
 
-@app.route(endpoint + '/cocktail/<cocktail_id>/make', methods=['GET'])
+@app.route(endpoint + '/cocktail/<cocktail_id>/make', methods=['POST'])
 def make_cocktail(cocktail_id):
     cocktail_id
+    m.make_cocktail()
     # Start the process of making a cocktail
     return jsonify({ "success": True })
 

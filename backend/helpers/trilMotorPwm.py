@@ -44,13 +44,13 @@ class DCMotor:
 if __name__ == "__main__":
     try:
         motor = DCMotor(25)
-        while True:
-            print("Turning on motor")
-            motor.changeSpeed(25)
-            sleep(5)
-            print("Turning off motor")
-            motor.stop()
-            sleep(5)
+        # while True:
+        print("Turning on motor")
+        motor.changeSpeed(25)
+        sleep(10)
+        print("Turning off motor")
+        motor.stop()
+        sleep(5)
     except KeyboardInterrupt as e:
         motor.cleanup()
         print("\nQuitting...")

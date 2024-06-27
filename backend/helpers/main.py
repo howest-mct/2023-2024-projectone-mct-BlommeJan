@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 from time import sleep, time
-from helpers.kleur import Kleur as kleur
+# from helpers.kleur import Kleur as kleur
 # from helpers.lcdPcf import lcd as lcd
 from helpers.trilMotorPwm import DCMotor as vibrator
 from helpers.onewire import OneWire as onewire
@@ -19,7 +19,7 @@ class Main:
     #-----------------------------------#
 
     def setup(self):
-        self.kleur = kleur(s0=5, s1=6, s2=13, s3=19, out=26)
+        # self.kleur = kleur(s0=5, s1=6, s2=13, s3=19, out=26)
         # # self.lcd = lcd()
         self.vibrator = vibrator(25)
         self.onewire = onewire("28-8590fd1d64ff")
@@ -58,7 +58,7 @@ class Main:
         self.pump.pump_all_off()
 
     def get_color(self) -> str:
-        return self.kleur.scan_colors()
+        pass
     
     def get_temp(self) -> float:
         return self.onewire.read_temperature()
@@ -83,27 +83,43 @@ class Main:
     #            application            #
     #-----------------------------------#
 
-    def make_cocktail(self, duration, bottle1, amount1, bottle2 = None, amount2 = None, bottle3 = None, amount3 = None, bottle4 = None, amount4 = None):
+    # def make_cocktail(self, duration, bottle1, amount1, bottle2 = None, amount2 = None, bottle3 = None, amount3 = None, bottle4 = None, amount4 = None):
+    def make_cocktail(self):
+        print("Making cocktail")    
         # if self.cup_available(): # check if cup is available but this for some reason does not work anymore and always returns 0
-        self.open_lid()
-        self.pump_amount(bottle1, amount1)
-        if bottle2 != None:
-            self.pump_amount(bottle2, amount2)
-        if bottle3 != None:
-            self.pump_amount(bottle3, amount3)
-        if bottle4 != None:
-            self.pump_amount(bottle4, amount4)
-        if duration != 0:
-            self.close_lid()
-            self.shake(duration)
-            self.open_lid()
+        # self.open_lid()
+        # self.pump_amount(bottle1, amount1)
+        # if bottle2 != None:
+        #     self.pump_amount(bottle2, amount2)
+        # if bottle3 != None:
+        #     self.pump_amount(bottle3, amount3)
+        # if bottle4 != None:
+        #     self.pump_amount(bottle4, amount4)
+        # if duration != 0:
+        #     self.close_lid()
+        #     self.shake(duration)
+        #     self.open_lid()
+
+        pumps = self.pump
+        amount = 2
+        amount = amount * 0.85 * 3# 1 milliliter = 0.85 seconds; 1 second = 30 milliliters; 30 milliliters = +- 1 oz
+        # print(amount)
+        pumps.pump_on(0)
+        time.sleep(amount)
+        pumps.pump_off(0)
+        amount = .5
+        amount = amount * 0.85 * 3
+        pumps.pump_on(3)
+        time.sleep(amount)
+        pumps.pump_off(3)
 
     def scan(self, color) -> int:
-        scan_color = self.get_color()
-        if scan_color == color:
-            return 1
-        else:
-            return 0
+        # scan_color = self.get_color()
+        # if scan_color == color:
+        #     return 1
+        # else:
+        #     return 0
+        pass
 
     def get_temperature(self) -> float:
         return self.get_temp()
@@ -125,3 +141,14 @@ class Main:
         # del self.servo
     #     del self.ultrasonic
 
+
+if __name__ == "__main__":
+    try:
+        main = Main()
+        while True:
+            main.cleanPumps()
+    except KeyboardInterrupt as e:
+        print("\nQuitting...")
+    finally:
+        del main
+        print("Cleaning up Pi")
