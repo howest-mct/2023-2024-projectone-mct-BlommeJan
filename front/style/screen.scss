@@ -519,6 +519,29 @@ a {
     }
 }
 
+.c-dropdowns {
+    display:block;
+    flex-direction: column;
+    justify-content: center;
+
+    &__back {
+        background-color: $PrimaryColor;
+        width: 100px;
+        height: 100px;
+        color: $BtnText;
+        border-radius: 50px;
+        font-size: $floatingbuttonFontSizes;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__icon {
+            fill: $BtnText;
+        }
+    }
+}
+
+
 .c-footer {
     padding: 24px 160px;
     text-align: center;

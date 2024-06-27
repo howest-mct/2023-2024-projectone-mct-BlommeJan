@@ -449,6 +449,26 @@ a {
   height: 400px;
 }
 
+.c-dropdowns {
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+}
+.c-dropdowns__back {
+  background-color: #F2EADA;
+  width: 100px;
+  height: 100px;
+  color: #59503E;
+  border-radius: 50px;
+  font-size: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.c-dropdowns__back__icon {
+  fill: #59503E;
+}
+
 .c-footer {
   padding: 24px 160px;
   text-align: center;

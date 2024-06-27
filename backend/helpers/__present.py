@@ -138,7 +138,7 @@ def make_cocktail(cocktail_name, pumps):
         for pump, amount in details['ingredients'].items():
             if amount > 0:
                 pump_index = int(pump.split('_')[1]) - 1  # Extract pump index from key
-                time_to_pump = amount * 29.57 * 0.85  # Convert oz to ml, then to seconds
+                time_to_pump = amount * 29.57 * 0.85 / 3  # Convert oz to ml, then to seconds
                 pumps.pump_on(pump_index)
                 sleep(time_to_pump)
                 pumps.pump_off(pump_index)
