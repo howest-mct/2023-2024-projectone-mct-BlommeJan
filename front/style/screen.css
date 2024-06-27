@@ -162,6 +162,7 @@ a {
   gap: 40px;
 }
 .c-cocktails__cocktail {
+  max-width: 400px;
   background-color: #F2EADA;
   color: #59503E;
   border-radius: 60px;
@@ -450,23 +451,39 @@ a {
 }
 
 .c-dropdowns {
-  display: block;
-  flex-direction: column;
-  justify-content: center;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .c-dropdowns__back {
-  background-color: #F2EADA;
-  width: 100px;
-  height: 100px;
-  color: #59503E;
-  border-radius: 50px;
-  font-size: 6rem;
   display: flex;
-  justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 .c-dropdowns__back__icon {
-  fill: #59503E;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+.c-dropdowns__back__text {
+  font-size: 18px;
+  color: #59503E;
+}
+.c-dropdowns__back a {
+  display: flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+.c-dropdowns .c-dropdowns_dropdown {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #F2EADA;
+  border-radius: 5px;
 }
 
 .c-footer {
