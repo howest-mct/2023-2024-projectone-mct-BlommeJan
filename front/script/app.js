@@ -182,7 +182,7 @@ const showCocktailInfo = (CocktailInfo) => {
       </div>
       <div class="c-postcard__content__btns">
         <div class="c-postcard__content__btns__img">
-          <img class="c-postcard__content__btns__img" src="pictures/Cocktails/${CocktailInfo.strPicture}" alt="${CocktailInfo.strDrink}">
+          <img class="c-postcard__content__btns__img__img" src="pictures/Cocktails/${CocktailInfo.strPicture}" alt="${CocktailInfo.strDrink}">
         </div>
         <div class="c-postcard__content__btns__btns">
           <button class="c-postcard__content__btns__btns__edit c-postcard__content__btns__btns__btn">EDIT</button>
