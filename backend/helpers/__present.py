@@ -40,7 +40,7 @@ class Pumps:
     def pump_all_on(self):
         for pin in self.pins:
             GPIO.output(pin, GPIO.HIGH)
-    
+
     def pump_all_off(self):
         for pin in self.pins:
             GPIO.output(pin, GPIO.LOW)
@@ -142,10 +142,10 @@ def make_cocktail(cocktail_name, pumps):
                 pumps.pump_on(pump_index)
                 sleep(time_to_pump)
                 pumps.pump_off(pump_index)
-                sleep(10)  # Wait for the liquid to settle and the lid to be closed
         if details['shake_duration'] > 0:
+            sleep(10)  # Wait for the liquid to settle and the lid to be closed
             motor = DCMotor(25)  # Assuming the motor is connected to GPIO pin 25
-            motor.changeSpeed(25) # Start the motor at 25% speed
+            motor.changeSpeed(25) # Start the mo/tor at 25% speed
             sleep(details['shake_duration'])
             motor.stop()
             motor.cleanup()

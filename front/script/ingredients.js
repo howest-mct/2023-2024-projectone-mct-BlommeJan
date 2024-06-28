@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const btnElement = document.querySelector(".js-start-btn")
+    const btnElement = document.querySelector(".js-ingredient-btn")
 
     btnElement.addEventListener("click", () => {
         const ingredient1 = document.getElementById("ingredient1").value
@@ -10,5 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         handleData(`http://${lanIP}/api/v1/update-ingredients`, (resp) => {}, null, "POST", {
             ingredient1, ingredient2, ingredient3, ingredient4
         })
+        console.log("test")
     })
 });

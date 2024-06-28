@@ -1,4 +1,4 @@
-import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO # type: ignore
 from time import sleep, time
 # from helpers.kleur import Kleur as kleur
 # from helpers.lcdPcf import lcd as lcd
@@ -23,7 +23,7 @@ class Main:
         # # self.lcd = lcd()
         self.vibrator = vibrator(25)
         self.onewire = onewire("28-8590fd1d64ff")
-        # self.pump = pump(address=0x3c) 
+        # self.pump = pump(address=0x3c)
         self.pump = pump(m1=12, m2=16, m3=20, m4=21)
         # # self.servo = servo(18)
         self.ultrasonic = ultrasonic(17,27)
@@ -36,7 +36,7 @@ class Main:
 
     #-----------------------------------#
     #              actions              #
-    #-----------------------------------#    
+    #-----------------------------------#
 
     def close_lid(self):
         pass
@@ -59,17 +59,17 @@ class Main:
 
     def get_color(self) -> str:
         pass
-    
+
     def get_temp(self) -> float:
         return self.onewire.read_temperature()
-    
+
     def cup_available(self) -> float:
         value = self.ultrasonic.distance()
         if value < 5:
             return 1
         else:
             return 0
-        
+
     def shake(self, duration):
         for i in range(0, 26, 5):
             vibrator.changeSpeed(i)
@@ -85,7 +85,7 @@ class Main:
 
     # def make_cocktail(self, duration, bottle1, amount1, bottle2 = None, amount2 = None, bottle3 = None, amount3 = None, bottle4 = None, amount4 = None):
     def make_cocktail(self):
-        print("Making cocktail")    
+        print("Making cocktail")
         # if self.cup_available(): # check if cup is available but this for some reason does not work anymore and always returns 0
         # self.open_lid()
         # self.pump_amount(bottle1, amount1)
@@ -126,11 +126,11 @@ class Main:
 
     def cleanPumps(self):
         self.clean_pump()
-    
+
 
     #-----------------------------------#
     #              cleanup              #
-    #-----------------------------------#                 
+    #-----------------------------------#
 
     # def __del__(self):
     #     del self.kleur
