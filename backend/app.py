@@ -4,7 +4,7 @@ from repositories.DataRepository import DataRepository
 from flask import Flask, jsonify, request
 from flask_socketio import SocketIO, emit
 from flask_cors import CORS
-# from helpers.main import Main
+from helpers.main import Main
 
 available_ingredients = [99, 83, 7, 236]
 
@@ -20,28 +20,30 @@ CORS(app)
 # ping interval forces rapid B2F communication
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='gevent', ping_interval=0.5)
 
-# m = Main()
-
-# def read_temperature():
-#     count = 0
-
-#     while True:
-#         # Reading temperature
-#         result = m.get_temp()
-#         # Sending temperature to frontend
-#         socketio.emit("BTF_temp", { "temp": result })
-#         count =+ 1
-#         # Inserting temperature in database
-#         if count == 6:
-#             DataRepository.create_temp_log(result)
-#             count = 0
-#         # Delay between reads
-#         time.sleep(5)
+m = Main()
 
 
-# def start_thread():
-#     threading.Thread(target=read_temperature, daemon=True).start()
-#     print("thread started")
+
+def read_temperature():
+    count = 0
+
+    while True:
+        # Reading temperature
+        result = m.get_temp()
+        # Sending temperature to frontend
+        socketio.emit("BTF_temp", { "temp": result })
+        count =+ 1
+        # Inserting temperature in database
+        if count == 6:
+            DataRepository.create_temp_log(result)
+            count = 0
+        # Delay between reads
+        time.sleep(5)
+
+
+def start_thread():
+    threading.Thread(target=read_temperature, daemon=True).start()
+    print("thread started")
 
 
 # API ENDPOINTS
@@ -118,13 +120,14 @@ def initial_connection():
 
 @socketio.on('F2B_clean_pumps')
 def clean_pumps():
-    # Main.cleanPumps()
+    Main.cleanPumps()
     print('Cleaning the pumps')
+
 
 @socketio.on('F2B_start_cocktail')
 def start_cocktail(data):
-    print(DataRepository.read_cocktail_instructions_by_id(data["idDrink"]))
-
+    instr = DataRepository.read_cocktail_instructions_by_id(data["idDrink"])
+    m.make_cocktail_from_data(instr)  # Call method correctly
     time.sleep(10)
     emit("B2F_cocktail_done")
 
@@ -136,7 +139,7 @@ def start_cocktail(data):
 
 if __name__ == '__main__':
     try:
-        # start_thread()
+        start_thread()
         print("**** Starting APP ****")
         socketio.run(app, debug=False, host='0.0.0.0')
     except KeyboardInterrupt:

@@ -24,7 +24,7 @@ class Main:
         self.vibrator = vibrator(25)
         self.onewire = onewire("28-8590fd1d64ff")
         # self.pump = pump(address=0x3c)
-        self.pump = pump(m1=12, m2=16, m3=20, m4=21)
+        self.pump = pump(m1=20, m2=21, m3=16, m4=12)
         # # self.servo = servo(18)
         self.ultrasonic = ultrasonic(17,27)
 
@@ -84,34 +84,52 @@ class Main:
     #-----------------------------------#
 
     # def make_cocktail(self, duration, bottle1, amount1, bottle2 = None, amount2 = None, bottle3 = None, amount3 = None, bottle4 = None, amount4 = None):
-    def make_cocktail(self):
-        print("Making cocktail")
-        # if self.cup_available(): # check if cup is available but this for some reason does not work anymore and always returns 0
-        # self.open_lid()
-        # self.pump_amount(bottle1, amount1)
-        # if bottle2 != None:
-        #     self.pump_amount(bottle2, amount2)
-        # if bottle3 != None:
-        #     self.pump_amount(bottle3, amount3)
-        # if bottle4 != None:
-        #     self.pump_amount(bottle4, amount4)
-        # if duration != 0:
-        #     self.close_lid()
-        #     self.shake(duration)
-        #     self.open_lid()
 
-        pumps = self.pump
-        amount = 2
-        amount = amount * 0.85 * 3# 1 milliliter = 0.85 seconds; 1 second = 30 milliliters; 30 milliliters = +- 1 oz
-        # print(amount)
-        pumps.pump_on(0)
-        time.sleep(amount)
-        pumps.pump_off(0)
-        amount = .5
-        amount = amount * 0.85 * 3
-        pumps.pump_on(3)
-        time.sleep(amount)
-        pumps.pump_off(3)
+    def make_cocktail_from_data(self, data):
+        for i in range(1, 10):
+            ingredient = data.get(f'ingredient_{i}')
+            amount = data.get(f'amount_{i}')
+            is_on_machine = data.get(f'is_on_machine_{i}')
+
+            if ingredient and amount and is_on_machine is not None:
+                # Convert amount to float, handling fractions
+                try:
+                    if '/' in amount:
+                        numerator, denominator = amount.split('/')
+                        amount = float(numerator) / float(denominator)
+                    else:
+                        amount = float(amount)
+                except ValueError:
+                    print(f"Error converting amount: {amount}")
+                    continue
+
+                if is_on_machine == 1:
+                    print(f"Adding {amount} oz of {ingredient}.")
+                    pump_index = i - 1
+                    if pump_index < len(self.pump.pins):  # Ensure pump index is valid
+                        print(f"Valid pump index: {pump_index}.")
+                        time_to_pump = amount * 29.57 * 0.85  # Convert oz to ml, then to seconds
+                        self.pump.pump_on(pump_index)
+                        sleep(time_to_pump/10)
+                        self.pump.pump_off(pump_index)
+                    else:
+                        print(f"Invalid pump index: {pump_index}. Check the machine setup.")
+                else:
+                    print(f"Add {amount} oz of {ingredient} manually.")
+
+        if data.get('shake_duration') > 0:
+            self.vibrator.changeSpeed(25)
+            sleep(data['shake_duration'])
+            self.vibrator.stop()
+            self.vibrator.cleanup()
+
+
+        if data.get('shake_duration') > 0:
+            self.vibrator.changeSpeed(25)
+            sleep(data['shake_duration'])
+            self.vibrator.stop()
+            self.vibrator.cleanup()
+
 
     def scan(self, color) -> int:
         # scan_color = self.get_color()
