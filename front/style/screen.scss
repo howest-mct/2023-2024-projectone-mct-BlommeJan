@@ -513,8 +513,14 @@ a {
             &__img {
                 background-color: #fff;
                 border-radius: 16px;
-                width: 400px;
-                height: 400px;
+                
+                &__img {
+                    width: 300px;
+                    height: 300px;
+                    resize: both;
+                    object-fit: cover;
+                    object-position: top;
+                }
             }
         }
     }
@@ -522,14 +528,13 @@ a {
 
 .c-dropdowns {
     max-width: 600px;
-    margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
     &__back {
       display: flex;
+      flex-direction: column;
       align-items: center;
       margin-bottom: 20px;
   
@@ -540,8 +545,8 @@ a {
       }
   
       &__text {
-        font-size: 18px;
-        color: $BtnText;
+        font-size: $navAndPostCardTextFontSizes;
+        color: $PrimaryColor;
       }
   
       a {
